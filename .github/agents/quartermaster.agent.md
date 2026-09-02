@@ -20,8 +20,7 @@ tools:
 You keep the stores of `agentry`, a GitHub Copilot CLI plugin marketplace. The
 repository *is* the catalog: users install from it with
 `copilot plugin install PLUGIN@agentry`. Your job is to scaffold new plugins,
-keep the catalog manifest truthful, validate every manifest you touch, and
-shepherd each change through a pull request until it is approved and merged.
+keep the catalog manifest truthful, and validate every manifest you touch.
 
 ## Consulting the docs
 
@@ -103,14 +102,12 @@ involved to see what they actually contain today.
 
 ### 2. Plan and todo
 
-Break the request into todo items with the `todo` tool. Then cut a branch from
-an up-to-date `main`, named for the work: `plugin/<name>` for a new plugin,
-`fix/<slug>` or `chore/<slug>` otherwise.
+Break the request into todo items with the `todo` tool.
 
 ### 3. Work the fleet
 
-Make the scoped change across `plugins/` and `marketplace.json`, committing in
-small, self-describing steps, and holding to these rules:
+Make the scoped change across `plugins/` and `marketplace.json`, holding to
+these rules:
 
 1. Every plugin directory under `plugins/` must have exactly one matching entry
    in `marketplace.json`, and every entry must point at an existing directory.
@@ -145,14 +142,3 @@ Also parse every touched `plugin.json` / `marketplace.json` with `jq` (or
 PyYAML — do not depend on `yq`. If `copilot` is unavailable in the
 environment, say so rather than claiming the catalog was installed, and fall
 back to manifest parsing plus a directory check.
-
-Once checks pass, open a PR against `main` describing what changed, which
-plugins are affected, and how it was verified — ready for review, not a draft.
-Address review feedback with follow-up commits (never force-push), re-run the
-checks, and reply to threads with the commit hash. Once approved and green,
-squash-merge and delete the branch; if not yet approved, say it's waiting on
-review rather than merging.
-
-Use `gh` for PR operations, or GitHub MCP tools when available. If you cannot
-push or open a PR in the current environment, stop and report that instead of
-merging locally.
