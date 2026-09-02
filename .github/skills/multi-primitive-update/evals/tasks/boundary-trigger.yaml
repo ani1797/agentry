@@ -1,0 +1,21 @@
+id: boundary-trigger-001
+name: Boundary - Single Primitive Change
+description: |
+  Test that this skill stays out of scope for a change confined to one
+  new skill in one existing plugin — that's scaffold-skill's job per
+  this skill's DO NOT USE FOR.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: "Add a single `draft` skill to the existing release-notes plugin."
+graders:
+  - type: skill_invocation
+    name: multi_primitive_update_not_invoked
+    config:
+      forbidden_skills:
+        - multi-primitive-update
+      mode: any_order
+expected:
+  outcomes:
+    - type: task_completed

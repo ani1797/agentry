@@ -1,0 +1,15 @@
+id: basic-usage-001
+name: Basic Usage
+description: |
+  Test that the skill scaffolds a new plugin end to end.
+tags:
+  - basic
+  - happy-path
+inputs:
+  prompt: "Scaffold a new agentry plugin called release-notes with a draft skill, and register it in the marketplace."
+expected:
+  output_contains:
+    - "plugin.json"
+    - "marketplace.json"
+  outcomes:
+    - type: task_completed

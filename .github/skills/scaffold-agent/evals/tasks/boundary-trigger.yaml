@@ -1,0 +1,21 @@
+id: boundary-trigger-001
+name: Boundary - Workflow Skill Request
+description: |
+  Test that this skill stays out of scope when asked to add a workflow
+  skill (not an agent) — that's scaffold-skill's job per this skill's
+  DO NOT USE FOR.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: "Add a `draft` skill to the release-notes plugin that drafts release notes from merged PRs."
+graders:
+  - type: skill_invocation
+    name: scaffold_agent_not_invoked
+    config:
+      forbidden_skills:
+        - scaffold-agent
+      mode: any_order
+expected:
+  outcomes:
+    - type: task_completed

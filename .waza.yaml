@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/microsoft/waza/main/schemas/config.schema.json
+#
+# Project-level waza config. Token limits default to 500/skill (see
+# `tokens.warningThreshold` below); use `tokens.limits.overrides` sparingly,
+# only for skills whose workflow genuinely needs more room to document
+# safely (e.g. multi-step procedures with non-obvious failure modes).
+# Prefer moving detail into a skill's references/*.md first — overrides
+# are a last resort, not a default.
+
+tokens:
+  warningThreshold: 500
+  fallbackLimit: 500
+  limits:
+    defaults:
+      "**/SKILL.md": 500
+    overrides:
+      # scaffold-skill documents a multi-step waza eval/grader workflow
+      # (tailor graders, spec verify, sandboxed run) that doesn't compress
+      # safely below ~500 tokens without losing the safety guidance that
+      # caused a real incident (see references/waza-and-manifest.md).
+      ".github/skills/scaffold-skill/SKILL.md": 850

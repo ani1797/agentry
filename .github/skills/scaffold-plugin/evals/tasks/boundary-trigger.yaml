@@ -1,0 +1,21 @@
+id: boundary-trigger-001
+name: Boundary - Add To Existing Plugin
+description: |
+  Test that this skill stays out of scope when asked to add a component
+  to an already-existing plugin — that's scaffold-skill/scaffold-agent's
+  job per this skill's DO NOT USE FOR.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: "Add a reviewer agent to the existing release-notes plugin."
+graders:
+  - type: skill_invocation
+    name: scaffold_plugin_not_invoked
+    config:
+      forbidden_skills:
+        - scaffold-plugin
+      mode: any_order
+expected:
+  outcomes:
+    - type: task_completed

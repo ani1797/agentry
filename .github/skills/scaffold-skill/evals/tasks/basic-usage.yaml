@@ -1,0 +1,14 @@
+id: basic-usage-001
+name: Basic Usage
+description: |
+  Test that the skill scaffolds a new workflow skill inside an existing plugin.
+tags:
+  - basic
+  - happy-path
+inputs:
+  prompt: "Add a draft skill to the release-notes plugin that drafts release notes from merged PRs."
+expected:
+  output_contains:
+    - "SKILL.md"
+  outcomes:
+    - type: task_completed

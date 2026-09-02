@@ -1,0 +1,14 @@
+id: basic-usage-001
+name: Basic Usage
+description: |
+  Test that the skill coordinates a change spanning multiple primitives.
+tags:
+  - basic
+  - happy-path
+inputs:
+  prompt: "Rename the release-notes plugin to changelog and add a notify skill to it in the same change."
+expected:
+  output_contains:
+    - "marketplace.json"
+  outcomes:
+    - type: task_completed

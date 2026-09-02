@@ -1,0 +1,14 @@
+id: basic-usage-001
+name: Basic Usage
+description: |
+  Test that the skill scaffolds a new specialist agent inside an existing plugin.
+tags:
+  - basic
+  - happy-path
+inputs:
+  prompt: "Add a reviewer agent to the release-notes plugin that checks drafted notes against merged PRs."
+expected:
+  output_contains:
+    - ".agent.md"
+  outcomes:
+    - type: task_completed
