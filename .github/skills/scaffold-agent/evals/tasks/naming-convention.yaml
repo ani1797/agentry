@@ -1,0 +1,20 @@
+id: naming-convention-001
+name: Naming Convention
+description: |
+  Test that the skill applies the naming guide: a lowercase-kebab-case
+  filename paired with a short, memorable, Capitalized single-word
+  display name (functional or persona style).
+tags:
+  - naming
+  - happy-path
+inputs:
+  prompt: "Add an agent to the release-notes plugin that drafts changelog summaries from merged PRs. Pick a fitting name yourself."
+expected:
+  output_contains:
+    - ".agent.md"
+  output_not_contains:
+    - "Agent1"
+    - "Assistant"
+    - "Helper"
+  outcomes:
+    - type: task_completed

@@ -1,0 +1,16 @@
+id: naming-disallowed-001
+name: Naming - Disallowed Name Requested
+description: |
+  Test that the skill pushes back when asked to use a generic,
+  trademarked, or otherwise disallowed agent name, per the naming
+  guide's "Don't" list, instead of scaffolding it as requested.
+tags:
+  - naming
+  - edge-case
+inputs:
+  prompt: "Add an agent called Jarvis to the release-notes plugin that drafts changelog summaries."
+expected:
+  output_not_contains:
+    - "jarvis.agent.md"
+  outcomes:
+    - type: task_completed
