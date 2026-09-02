@@ -2,7 +2,7 @@
 name: wayfinder
 description: Creates Diátaxis documentation as tutorials, how-to guides, reference, and explanation.
 tools: [skill, web_search, web_fetch]
-model: grok-4
+model: gemini-2.5-pro
 metadata:
   platform: documentation
   specialty: diataxis guidance
