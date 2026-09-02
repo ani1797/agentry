@@ -1,0 +1,20 @@
+id: comprehensive-usage-001
+name: Comprehensive Classify-Structure-Draft-Review Request
+description: |
+  Test that the skill handles a single request spanning the full
+  description — classify, structure, draft, and review docs across the
+  four Diátaxis quadrants — not just one isolated step.
+tags:
+  - basic
+  - happy-path
+inputs:
+  prompt: >
+    We're overhauling our docs site. Can you classify, structure, draft,
+    and review our docs using the Diátaxis framework's four quadrants —
+    tutorial, how-to, reference, and explanation — starting with our
+    onboarding page?
+expected:
+  output_contains:
+    - "quadrant"
+  outcomes:
+    - type: task_completed
