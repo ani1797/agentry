@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    {
+      "name": "release-notes",
+      "source": "plugins/release-notes",
+      "description": "Drafts structured release notes from merged pull requests, grouping changes by label and producing a Markdown changelog ready for review.",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "release-notes",
+  "description": "Drafts structured release notes from merged pull requests, grouping changes by label and producing a Markdown changelog ready for review.",
+  "version": "0.1.0",
+  "author": { "name": "agentry", "email": "agentry@github.com" },
+  "license": "MIT",
+  "keywords": ["release-notes", "changelog", "github", "prs"]
+}
