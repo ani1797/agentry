@@ -14,5 +14,11 @@ metrics:
     weight: 1.0
     threshold: 0.8
     description: Did the skill complete the assigned task?
+graders:
+  - type: code
+    name: has_output
+    config:
+      assertions:
+        - "len(output) > 0"
 tasks:
   - "tasks/*.yaml"

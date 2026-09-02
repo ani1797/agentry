@@ -8,8 +8,14 @@ tags:
   - negative-test
 inputs:
   prompt: "Write a punchy marketing tagline for our new product launch, or a short piece of fiction about it."
+graders:
+  - type: skill_invocation
+    name: diataxis_not_invoked
+    config:
+      forbidden_skills:
+        - diataxis
+      mode: any_order
 expected:
   should_trigger: false
-  output_not_contains:
-    - "quadrant"
-    - "Diátaxis"
+  outcomes:
+    - type: task_completed
