@@ -1,0 +1,23 @@
+id: basic-usage-001
+name: Basic Usage - Embedded Flowchart
+description: |
+  Test that the skill covers adding or editing a Mermaid diagram, as a
+  mermaid fenced code block embedded in markdown (or a standalone
+  docs/diagrams/*.mmd file), and validates it with the mmdc CLI so it
+  renders cleanly before committing.
+tags:
+  - basic
+  - happy-path
+inputs:
+  prompt: >
+    Add a Mermaid flowchart diagram, as a mermaid fenced code block, to
+    docs/architecture.md showing the request flow between the client, API
+    gateway, and database. Validate that the diagram's syntax renders
+    cleanly with mmdc before committing.
+expected:
+  output_contains:
+    - "mmdc"
+    - "flowchart"
+  outcomes:
+    - type: task_completed
+

@@ -1,0 +1,25 @@
+id: boundary-trigger-001
+name: Boundary - Non-Mermaid Image and Diagram Formats
+description: |
+  Test that this skill stays out of scope for generating non-Mermaid
+  images (a photo or screenshot) and for writing diagrams in a
+  non-Mermaid format (PlantUML or Graphviz DOT) — per this skill's own
+  DO NOT USE FOR list.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: >
+    Take a screenshot photo of the login page for the README, and
+    separately write a PlantUML or Graphviz DOT diagram for the auth flow
+    instead of a Mermaid diagram, saving it as docs/diagrams/auth-flow.puml.
+graders:
+  - type: skill_invocation
+    name: mermaid_not_invoked
+    config:
+      forbidden_skills:
+        - mermaid
+      mode: any_order
+expected:
+  outcomes:
+    - type: task_completed

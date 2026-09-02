@@ -1,0 +1,22 @@
+id: edge-case-001
+name: Edge Case - Standalone Diagram File
+description: |
+  Test the standalone workflow: a Mermaid diagram of any supported type
+  saved as a standalone docs/diagrams/*.mmd file, rendered and regenerated
+  as a preview image with mmdc — distinct from the embedded-block workflow
+  in basic-usage.
+tags:
+  - edge-case
+inputs:
+  prompt: >
+    Create a standalone Mermaid sequence diagram source file at
+    docs/diagrams/auth-flow.mmd for the login handshake between Client,
+    Auth, and API. Regenerate its rendered preview image with mmdc and
+    reference the image from docs/architecture.md.
+expected:
+  output_contains:
+    - "docs/diagrams/auth-flow"
+    - "svg"
+  outcomes:
+    - type: task_completed
+

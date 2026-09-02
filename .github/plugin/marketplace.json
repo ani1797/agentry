@@ -18,7 +18,7 @@
       "name": "engineer",
       "source": "plugins/engineer",
       "description": "A software engineering team providing full end-to-end agent capabilities, from design through testing.",
-      "version": "0.1.0"
+      "version": "0.2.0"
     },
     {
       "name": "writing",

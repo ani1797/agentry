@@ -1,0 +1,21 @@
+id: should-not-trigger-001
+name: Should Not Trigger - Unrelated Prompt
+description: |
+  Test that the skill does NOT activate on a prompt with no diagramming
+  intent at all. Validates trigger specificity.
+tags:
+  - anti-trigger
+  - negative-test
+inputs:
+  prompt: "What is the weather today?"
+graders:
+  - type: skill_invocation
+    name: mermaid_not_invoked
+    config:
+      forbidden_skills:
+        - mermaid
+      mode: any_order
+expected:
+  output_not_contains:
+    - "mermaid"
+
