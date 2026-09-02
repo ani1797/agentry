@@ -1,9 +1,10 @@
 {
   "name": "writing",
-  "description": "Create and refine Substack posts, LinkedIn content, and Diátaxis documentation.",
+  "description": "Create polished long-form and short-form writing for publishing, professional audiences, and technical documentation.",
   "version": "0.1.0",
+  "license": "MIT",
   "author": {
-    "name": "ani1797"
+    "name": "Anirudh Aggarwal"
   },
   "keywords": [
     "writing",

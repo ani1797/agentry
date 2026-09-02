@@ -1,6 +1,14 @@
 ---
 name: research-outline
 description: Research claims and produce an evidence-aware outline for a writing project.
+license: MIT
+allowed-tools:
+  - bash
+  - web_search
+  - web_fetch
+metadata:
+  category: writing
+  workflow: research-and-outline
 ---
 
 # Research and outline

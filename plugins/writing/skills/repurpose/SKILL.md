@@ -1,6 +1,14 @@
 ---
 name: repurpose
 description: Adapt an approved piece for a different audience, format, or publishing channel.
+license: MIT
+allowed-tools:
+  - bash
+  - web_search
+  - web_fetch
+metadata:
+  category: writing
+  workflow: repurposing
 ---
 
 # Repurpose

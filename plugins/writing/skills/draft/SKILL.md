@@ -1,6 +1,14 @@
 ---
 name: draft
 description: Draft reader-focused content from an approved brief and outline.
+license: MIT
+allowed-tools:
+  - bash
+  - web_search
+  - web_fetch
+metadata:
+  category: writing
+  workflow: drafting
 ---
 
 # Draft

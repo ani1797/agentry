@@ -1,7 +1,7 @@
 {
   "name": "agentry",
   "owner": {
-    "name": "ani1797"
+    "name": "Anirudh Aggarwal"
   },
   "metadata": {
     "description": "GitHub Copilot CLI plugin marketplace."
@@ -10,8 +10,12 @@
     {
       "name": "writing",
       "source": "plugins/writing",
-      "description": "Create and refine Substack posts, LinkedIn content, and Diátaxis documentation.",
-      "version": "0.1.0"
+      "description": "Create polished long-form and short-form writing for publishing, professional audiences, and technical documentation.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "author": {
+        "name": "Anirudh Aggarwal"
+      }
     }
   ]
 }

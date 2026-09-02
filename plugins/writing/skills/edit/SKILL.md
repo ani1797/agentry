@@ -1,6 +1,14 @@
 ---
 name: edit
 description: Edit writing for clarity, accuracy, voice, structure, and reader value.
+license: MIT
+allowed-tools:
+  - bash
+  - web_search
+  - web_fetch
+metadata:
+  category: writing
+  workflow: editing
 ---
 
 # Edit
