@@ -7,6 +7,7 @@ description: >
   components together, or a schema change touching multiple plugins at
   once. DO NOT USE FOR: a change confined to one new plugin, skill, or
   agent — use scaffold-plugin, scaffold-skill, or scaffold-agent instead.
+allowed-tools: write(plugins/**) write(.github/plugin/marketplace.json)
 ---
 
 **WORKFLOW SKILL**
@@ -15,11 +16,10 @@ description: >
 
 ## Overview
 
-Some changes can't be scoped to one primitive: a plugin rename touches
-every path and manifest inside it, a new plugin ships with its first
-skill and agent together, or a schema change ripples across many
-`plugin.json` files. This sequences the change so the repo is never left
-partially consistent, with every touched file in one PR with matching
+A plugin rename touches every path and manifest inside it; a new plugin
+ships its first skill and agent together; a schema change ripples across
+many `plugin.json` files. Sequences the change so the repo is never left
+partially consistent, every touched file landing in one PR with matching
 metadata.
 
 ## Steps
@@ -39,14 +39,13 @@ Full commands: [references/checklist.md](references/checklist.md).
 
 > "Rename `release-notes` to `changelog`, add a `notify` skill."
 
-`git mv plugins/release-notes plugins/changelog`, update `name` in both
-manifests, fix internal references, use `scaffold-skill` for `notify`,
-validate, reinstall, list every touched path in the PR body.
+`git mv` the plugin dir, update `name` in both manifests, fix internal
+references, use `scaffold-skill` for `notify`, validate, reinstall, list
+every touched path in the PR body.
 
 ## Common issues
 
 - Stale `marketplace.json` path after a rename: `git mv` doesn't update
-  `source` — grep for the old name first.
-- Version bumped in one manifest but not the other: diff both side by
-  side as a final check.
+  `source` — grep the old name first.
+- Version bumped in one manifest, not the other: diff both side by side.
 - PR scope creeps to unrelated plugins: split into a separate PR.

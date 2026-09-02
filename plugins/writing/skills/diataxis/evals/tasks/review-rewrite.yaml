@@ -8,8 +8,16 @@ tags:
   - review
 inputs:
   prompt: >
-    Please review our existing docs/auth-setup.md for quadrant drift or
-    missing sections, and propose structural rewrites if it needs them.
+    Please review this doc for quadrant drift or missing sections, and
+    propose structural rewrites if it needs them:
+
+    # Setting Up Auth
+
+    First, install the auth package. Then create a config file. The
+    library works by validating a JWT against your identity provider's
+    public key on every request — this is why token expiry matters. Run
+    `auth init` to scaffold the config, then call `auth.verify(token)`
+    in your request handler.
 expected:
   output_contains:
     - "quadrant"

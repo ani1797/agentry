@@ -6,6 +6,7 @@ description: >
   USE FOR: adding a specialist-role agent to a plugin that already exists.
   DO NOT USE FOR: creating a brand-new plugin (scaffold-plugin) or adding a
   workflow skill (scaffold-skill).
+allowed-tools: write(plugins/**)
 ---
 
 **WORKFLOW SKILL**

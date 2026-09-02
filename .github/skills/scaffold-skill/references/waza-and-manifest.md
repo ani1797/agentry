@@ -62,6 +62,33 @@ waza run plugins/<plugin>/skills/<skill-name>/evals/eval.yaml
 Confirm the run completes and no stray `copilot` process is left running
 (`ps aux | grep copilot`) before deleting the sandbox.
 
+## Pre-approve the skill's own write paths (`allowed-tools`)
+
+Per the [agentskills.io spec](https://agentskills.io/specification.md),
+`SKILL.md` frontmatter supports an optional `allowed-tools` field: a
+space-separated list of tool permission patterns Copilot CLI pre-approves
+whenever the skill is active, so the agent doesn't stop to ask permission
+for the paths the skill is *made* to write to. Scope it to the skill's
+real target paths — never a bare `write` unless the skill's whole job is
+writing anywhere (rare):
+
+```yaml
+---
+name: my-skill
+description: >
+  ...
+allowed-tools: write(plugins/my-plugin/**)
+---
+```
+
+Combine multiple scopes as separate space-separated entries (e.g.
+`write(plugins/**) write(.github/plugin/marketplace.json)` for a skill
+that also touches the marketplace manifest). Read-only tools (`view`,
+`grep`, `glob`, plain `read`) don't need listing — Copilot already
+auto-approves read-only operations. Never pre-approve `shell`/`bash`
+unless every script the skill can run is reviewed and trusted (see the
+CLI's own warning on this); prefer leaving shell commands to prompt.
+
 ## Compliance bar (`waza check`)
 
 - `description`: action-verb-first sentence, 150+ characters, with a

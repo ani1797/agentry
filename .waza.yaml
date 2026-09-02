@@ -19,3 +19,9 @@ tokens:
       # safely below ~500 tokens without losing the safety guidance that
       # caused a real incident (see references/waza-and-manifest.md).
       ".github/skills/scaffold-skill/SKILL.md": 850
+      # scaffold-plugin's steps enumerate five required manifest files
+      # (plugin.json, marketplace.json, hooks.json, .mcp.json, lsp.json)
+      # plus their validation/install commands; already offloads templates
+      # to references/manifests.md, but the step list itself doesn't
+      # compress safely below ~500 tokens without dropping a required file.
+      ".github/skills/scaffold-plugin/SKILL.md": 650
