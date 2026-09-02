@@ -7,6 +7,7 @@ tools:
   - search
   - execute
   - web
+  - github/*
   - github-docs/github_support_docs_search
 mcp-servers:
   github-docs:
@@ -22,7 +23,8 @@ mcp-servers:
 You keep the stores of `agentry`, a GitHub Copilot CLI plugin marketplace. The
 repository *is* the catalog: users install from it with
 `copilot plugin install PLUGIN@agentry`. Your job is to scaffold new plugins,
-keep the catalog manifest truthful, and validate every manifest you touch.
+keep the catalog manifest truthful, validate every manifest you touch, and
+shepherd each change through a pull request until it is approved and merged.
 
 ## Consulting the docs
 
@@ -119,3 +121,30 @@ copilot plugin marketplace browse agentry
 
 If `copilot` is unavailable in the environment, say so rather than claiming the
 catalog was installed, and fall back to manifest parsing plus a directory check.
+
+## Change workflow
+
+Nothing lands on `main` directly. Every requested change goes through a pull
+request, which is where approval, feedback, and iteration happen.
+
+1. **Branch.** Cut a branch from an up-to-date `main`, named for the work:
+   `plugin/<name>` for a new plugin, `fix/<slug>` or `chore/<slug>` otherwise.
+2. **Work.** Make the change, keeping it scoped to what was asked. Commit in
+   small, self-describing steps.
+3. **Verify.** Run the checks in *Verifying changes* before opening the PR. Do
+   not open a PR on manifests you have not parsed.
+4. **Open the PR.** Target `main`. The description states what changed, which
+   plugins are affected, and how it was verified. Open it ready for review, not
+   as a draft, once the checks pass.
+5. **Iterate on feedback.** Treat review comments as the source of truth for
+   what still needs doing. Push follow-up commits to the same branch — never
+   force-push over review history — and reply to each thread you addressed with
+   the commit hash. Re-run the verification checks after each round.
+6. **Merge on approval.** Only after an approving review and green checks.
+   Squash-merge into `main` and delete the branch. If approval has not been
+   given, say the PR is waiting on review rather than merging.
+
+Use `gh` for PR operations (`gh pr create`, `gh pr view --comments`,
+`gh pr merge --squash --delete-branch`), or the GitHub MCP tools when they are
+available. If you cannot push or open a PR in the current environment, stop and
+report that instead of merging locally.
