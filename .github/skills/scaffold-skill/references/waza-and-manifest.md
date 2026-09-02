@@ -89,6 +89,34 @@ auto-approves read-only operations. Never pre-approve `shell`/`bash`
 unless every script the skill can run is reviewed and trusted (see the
 CLI's own warning on this); prefer leaving shell commands to prompt.
 
+## Declaring required CLI tools (`compatibility`)
+
+Per the [agentskills.io spec](https://agentskills.io/specification.md),
+`SKILL.md` frontmatter supports an optional `compatibility` field (max
+500 characters): freeform text naming environment requirements —
+intended product, required system packages, network access. Most
+skills don't need it; add it only when the skill's own steps shell out
+to a CLI tool that isn't guaranteed to already be installed (e.g.
+`waza`, `docker`, `gh`, `jq`):
+
+```yaml
+---
+name: my-skill
+description: >
+  ...
+compatibility: Requires waza (see references/getting-started.md if missing)
+---
+```
+
+When you add `compatibility`, also add a `references/getting-started.md`
+stub in the new skill's own directory (not this scaffold-skill's) with
+install instructions for that tool — e.g. for `waza`, link
+https://microsoft.github.io/waza/getting-started/. This gives the agent
+something concrete to point the user to the first time the tool turns
+out to be missing, instead of failing opaquely mid-step. Keep the
+frontmatter line itself short; put version pins, platform notes, or
+multi-tool install steps in the linked doc.
+
 ## Compliance bar (`waza check`)
 
 - `description`: action-verb-first sentence, 150+ characters, with a

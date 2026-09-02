@@ -33,9 +33,9 @@ for a single skill.
 3. Write frontmatter/body for `waza check`; confirm `plugin.json`'s
    `skills` field covers the new directory. Add an `allowed-tools` field
    scoped to the paths this skill actually writes to (e.g.
-   `write(plugins/<plugin>/**)`) so using it doesn't prompt for
-   permission on its own target paths — agentskills.io spec, details in
-   the reference doc.
+   `write(plugins/<plugin>/**)`) and, if a step shells out to a CLI tool
+   that might be missing (e.g. `waza`, `docker`), a `compatibility`
+   field naming it — agentskills.io spec, details in the reference doc.
 4. Write real tasks/graders: a happy path, an edge case, and a
    negative/boundary task targeting this skill's own `DO NOT USE FOR`
    list (not just an unrelated prompt). Replace the scaffolded
@@ -69,3 +69,5 @@ check → spec-verify → sandboxed-run, reinstall, verify.
 - `waza spec verify` shows uncovered `DO NOT USE FOR`: add a task with a
   `skill_invocation` grader's `forbidden_skills` (reference doc example).
 - Missing after reinstall: rerun `copilot plugin install ./plugins/<plugin>`.
+- Tool assumed present but missing: add `compatibility` frontmatter +
+  `references/getting-started.md` (reference doc).
