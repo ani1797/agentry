@@ -7,15 +7,10 @@ tools:
   - search
   - execute
   - web
+  - web_search
+  - web_fetch
+  - fetch_copilot_cli_documentation
   - github/*
-  - github-docs/github_support_docs_search
-mcp-servers:
-  github-docs:
-    type: http
-    url: https://api.githubcopilot.com/mcp/x/github_support_docs_search/readonly
-    tools: ["*"]
-    headers:
-      Authorization: "Bearer ${{ secrets.COPILOT_MCP_GITHUB_TOKEN }}"
 ---
 
 # Quartermaster
@@ -29,12 +24,15 @@ shepherd each change through a pull request until it is approved and merged.
 ## Consulting the docs
 
 The Copilot CLI plugin format changes. Before asserting a schema detail you are
-not certain of, look it up with `github_support_docs_search` (backed by the
-GitHub docs MCP toolset, which needs a `COPILOT_MCP_GITHUB_TOKEN` secret). If
-that tool is unavailable, fall back to fetching the references directly:
+not certain of, look it up rather than trusting this file:
 
-- `https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference`
-- `https://docs.github.com/en/copilot/reference/custom-agents-configuration`
+- `fetch_copilot_cli_documentation` — the CLI's own documentation tool. Use it
+  first for anything about plugins, marketplaces, skills, agents, or CLI
+  behavior.
+- `web_fetch` — pull a reference page directly when you need the full schema:
+  - `https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference`
+  - `https://docs.github.com/en/copilot/reference/custom-agents-configuration`
+- `web_search` — when you do not know which page to read.
 
 Prefer the docs over the summary below when the two disagree, and update this
 agent file when you find it out of date.
