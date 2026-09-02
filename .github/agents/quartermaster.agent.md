@@ -46,7 +46,9 @@ plugins/<plugin-name>/            # one directory per published plugin
   plugin.json                     # plugin manifest
   agents/*.agent.md               # specialist roles
   skills/<skill>/SKILL.md         # individual workflows
-  hooks.json / .mcp.json          # hooks and MCP servers (optional)
+  hooks.json                       # hook events, scaffolded empty on every plugin
+  .mcp.json                        # MCP servers, scaffolded empty on every plugin
+  lsp.json                          # LSP servers, scaffolded empty on every plugin
 ```
 
 The CLI resolves the marketplace manifest from `marketplace.json`,
@@ -75,8 +77,12 @@ Optional entry fields: `description` (max 1024 chars), `version`, `author`,
 
 Only `name` is required (kebab-case, letters/numbers/hyphens, max 64 chars).
 Recommended: `description`, `version` (semver), `author`, `license`, `keywords`.
-Component paths default to `agents/` and `skills/`; set `hooks`, `mcpServers`,
-or `lspServers` only when the plugin ships them.
+Component paths default to `agents/` and `skills/`. Every scaffolded plugin
+ships three empty stubs, wired explicitly even before it uses any of them:
+a `hooks.json` (all supported hook events present as empty arrays), a
+`.mcp.json` (empty `mcpServers: {}`), and an `lsp.json` (empty
+`lspServers: {}`) — via the `hooks`, `mcpServers`, and `lspServers`
+fields respectively.
 
 ## Plugin boundaries
 

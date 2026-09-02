@@ -1,0 +1,11 @@
+{
+  "name": "engineer",
+  "description": "A software engineering team providing full end-to-end agent capabilities, from design through testing.",
+  "version": "0.1.0",
+  "author": { "name": "Anirudh Aggarwal", "email": "ani1797@users.noreply.github.com" },
+  "license": "MIT",
+  "keywords": ["engineering", "software", "development"],
+  "hooks": "hooks.json",
+  "mcpServers": ".mcp.json",
+  "lspServers": "lsp.json"
+}

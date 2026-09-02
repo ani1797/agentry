@@ -25,12 +25,17 @@ workflow; a single workflow belongs as a skill in an existing plugin.
 
 1. Branch `plugin/<name>` (kebab-case, matches the eventual `plugin.json`
    `name`) from up-to-date `main`; `mkdir -p plugins/<name>/{agents,skills}`.
-2. Write `plugin.json` and the matching `marketplace.json` entry — see
+2. Write `plugin.json` and the matching `marketplace.json` entry, plus stub
+   `hooks.json` (every supported event, empty arrays), `.mcp.json` (empty
+   `mcpServers: {}`), and `lsp.json` (empty `lspServers: {}`)
+   — every new plugin ships all three, wired into `plugin.json`, even
+   before it uses any of them. See
    [references/manifests.md](references/manifests.md) for templates,
    fields, and validation/install commands.
 3. Add one real component (skill or agent) before opening a PR — an empty
    plugin isn't useful.
-4. Validate both manifests and every `source` path.
+4. Validate all five files (`plugin.json`, `marketplace.json`, `hooks.json`,
+   `.mcp.json`, `lsp.json`) and every `source` path.
 5. Install locally and confirm with `copilot plugin list`, `/agent`,
    `/skills list`.
 6. Open a PR: small commits, verification in the description.
