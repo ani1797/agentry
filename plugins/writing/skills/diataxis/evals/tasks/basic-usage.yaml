@@ -1,0 +1,19 @@
+id: basic-usage-001
+name: Basic Usage
+description: |
+  Test that the skill classifies a doc into a quadrant and structures it
+  before drafting.
+tags:
+  - basic
+  - happy-path
+inputs:
+  prompt: >
+    I need to write a brand-new doc that walks a first-time user through
+    installing our CLI and running their first command, start to finish.
+    Help me with deciding which quadrant this content belongs to, and how
+    should I structure the doc before writing it?
+expected:
+  output_contains:
+    - "tutorial"
+  outcomes:
+    - type: task_completed

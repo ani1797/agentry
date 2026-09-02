@@ -1,0 +1,17 @@
+id: boundary-trigger-001
+name: Should Not Trigger On Code Sample Verification
+description: |
+  Test that the skill does NOT activate for verifying the technical
+  accuracy of code samples — the DO NOT USE FOR list defers that to a
+  domain specialist, not this skill.
+tags:
+  - anti-trigger
+  - boundary
+  - negative-test
+inputs:
+  prompt: "Can you verify this Python function's algorithm is actually correct?"
+expected:
+  should_trigger: false
+  output_not_contains:
+    - "quadrant"
+    - "Diátaxis"

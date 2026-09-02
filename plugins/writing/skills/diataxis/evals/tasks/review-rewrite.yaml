@@ -1,0 +1,17 @@
+id: review-rewrite-001
+name: Reviewing An Existing Doc And Proposing A Rewrite
+description: |
+  Test that the skill can review an existing doc for quadrant drift or
+  missing sections and propose structural rewrites.
+tags:
+  - basic
+  - review
+inputs:
+  prompt: >
+    Please review our existing docs/auth-setup.md for quadrant drift or
+    missing sections, and propose structural rewrites if it needs them.
+expected:
+  output_contains:
+    - "quadrant"
+  outcomes:
+    - type: task_completed

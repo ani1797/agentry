@@ -1,0 +1,18 @@
+id: edge-case-001
+name: Ambiguous Content Spanning Two Quadrants
+description: |
+  Test that the skill correctly identifies content trying to serve two
+  Diátaxis needs at once and recommends splitting rather than picking
+  one quadrant and losing the other need.
+tags:
+  - edge-case
+inputs:
+  prompt: >
+    I have one page that both explains why our caching layer is designed
+    the way it is and walks through the exact steps to configure it for
+    a new service. Is this one quadrant or does it need to be split?
+expected:
+  output_contains:
+    - "split"
+  outcomes:
+    - type: task_completed
