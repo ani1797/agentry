@@ -1,0 +1,15 @@
+id: should-not-trigger-001
+name: Should Not Trigger On Non-Documentation Writing
+description: |
+  Test that the skill does NOT activate for marketing copy or fiction,
+  which the skill's DO NOT USE FOR list explicitly excludes.
+tags:
+  - anti-trigger
+  - negative-test
+inputs:
+  prompt: "Write a punchy marketing tagline for our new product launch, or a short piece of fiction about it."
+expected:
+  should_trigger: false
+  output_not_contains:
+    - "quadrant"
+    - "Diátaxis"
