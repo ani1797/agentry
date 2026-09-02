@@ -12,6 +12,7 @@ tools:
   - web_fetch
   - fetch_copilot_cli_documentation
   - github/*
+  - ask_user
 ---
 
 # Quartermaster
