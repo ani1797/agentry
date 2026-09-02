@@ -1,0 +1,19 @@
+id: positive-trigger-001
+name: Positive Trigger 1
+description: Auto-generated positive-trigger task.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "line-editing a draft essay or post; tightening structure and voice; checking factual support before publishing"
+expected:
+  should_trigger: true
+graders:
+  - type: text
+    name: contains-keywords
+    config:
+      contains:
+        - "draft"
+        - "essay"
+        - "line-editing"
+        - "post"
+

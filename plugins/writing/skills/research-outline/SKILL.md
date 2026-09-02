@@ -1,6 +1,11 @@
 ---
 name: research-outline
-description: Research claims and produce an evidence-aware outline for a writing project.
+description: >-
+  Use this skill to research claims and produce an evidence-aware outline
+  for a writing project. **WORKFLOW SKILL**. USE FOR: outlining a Substack
+  essay or LinkedIn post; checking claims before drafting; structuring a
+  documentation page. DO NOT USE FOR: writing the final draft or
+  line-editing existing prose.
 license: MIT
 allowed-tools:
   - bash
@@ -9,6 +14,7 @@ allowed-tools:
 metadata:
   category: writing
   workflow: research-and-outline
+  version: "1.0"
 ---
 
 # Research and outline
@@ -23,3 +29,13 @@ Use this workflow to turn a brief and source material into a defensible structur
 6. Flag gaps, uncertain claims, and source conflicts before drafting.
 
 Do not elevate unverified material into fact. Prefer primary and supplied sources for product, policy, and technical claims.
+
+## Example
+
+Input: a voice brief for a documentation page plus a product changelog.
+Output: a section-by-section outline noting which claims are sourced from the changelog and which need engineering confirmation.
+
+## Common issues
+
+- Conflicting sources — record the conflict and flag it instead of picking one silently.
+- Thin evidence — mark a claim as an open question rather than promoting it to fact.
