@@ -10,8 +10,14 @@ tags:
   - negative-test
 inputs:
   prompt: "Can you verify this Python function's algorithm is actually correct?"
+graders:
+  - type: skill_invocation
+    name: diataxis_not_invoked
+    config:
+      forbidden_skills:
+        - diataxis
+      mode: any_order
 expected:
   should_trigger: false
-  output_not_contains:
-    - "quadrant"
-    - "Diátaxis"
+  outcomes:
+    - type: task_completed
