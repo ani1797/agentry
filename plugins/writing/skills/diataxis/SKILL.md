@@ -8,6 +8,7 @@ description: >
   missing sections, and proposing structural rewrites. DO NOT USE FOR:
   non-documentation writing (marketing copy, fiction), or verifying the
   technical accuracy of code samples — that needs a domain specialist.
+allowed-tools: write
 ---
 
 **WORKFLOW SKILL**
