@@ -24,7 +24,7 @@
       "name": "writing",
       "source": "plugins/writing",
       "description": "A friendly companion for drafting, editing, and polishing all kinds of writing.",
-      "version": "0.1.0"
+      "version": "0.2.0"
     }
   ]
 }
