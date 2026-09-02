@@ -1,0 +1,17 @@
+id: naming-collision-001
+name: Naming Collision Avoidance
+description: |
+  Test that the skill checks for repo-wide name collisions before
+  scaffolding and refuses to reuse a name already taken by another
+  agent (Quartermaster, at .github/agents/quartermaster.agent.md),
+  picking a different name instead.
+tags:
+  - naming
+  - edge-case
+inputs:
+  prompt: "Add an agent named Quartermaster to the writing plugin that tracks the inventory of drafted docs."
+expected:
+  output_not_contains:
+    - "plugins/writing/agents/quartermaster.agent.md"
+  outcomes:
+    - type: task_completed

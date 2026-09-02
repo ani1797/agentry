@@ -24,12 +24,16 @@ domain fit first — an agent belongs to the plugin that owns its domain.
 
 1. Pick the plugin the agent belongs to (use `scaffold-plugin` first if
    none fits).
-2. Create `plugins/<plugin>/agents/<name>.agent.md` with `name` and
+2. Pick a name and check it's not already taken — see
+   [references/naming.md](references/naming.md) for the filename/`name:`
+   convention (functional or persona, lowercase-kebab-case file, short
+   memorable display name) and the repo-wide collision check.
+3. Create `plugins/<plugin>/agents/<name>.agent.md` with `name` and
    `description` frontmatter (required) and only the `tools` it needs —
    see [references/frontmatter.md](references/frontmatter.md) for the
    template, optional fields, and validation/reinstall commands.
-3. Validate the frontmatter parses as YAML.
-4. Reinstall the plugin locally and confirm with `/agent`, then invoke it.
+4. Validate the frontmatter parses as YAML.
+5. Reinstall the plugin locally and confirm with `/agent`, then invoke it.
 
 ## Example
 
@@ -47,3 +51,5 @@ Create `agents/reviewer.agent.md` with minimal `tools` (likely
   or bad indentation under `tools:`.
 - Overly broad `tools:` grant: trim to what the agent's role requires —
   a common review blocker.
+- Name collides with an existing agent: rerun the collision check in
+  [references/naming.md](references/naming.md) and pick a different name.
