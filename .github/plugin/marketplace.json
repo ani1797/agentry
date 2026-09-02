@@ -1,0 +1,30 @@
+{
+  "name": "agentry",
+  "owner": {
+    "name": "Anirudh Aggarwal",
+    "email": "ani1797@users.noreply.github.com"
+  },
+  "metadata": {
+    "description": "GitHub Copilot CLI plugin marketplace."
+  },
+  "plugins": [
+    {
+      "name": "general",
+      "source": "plugins/general",
+      "description": "General-purpose agents for everyday tasks that don't fit a specialized domain.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "engineer",
+      "source": "plugins/engineer",
+      "description": "A software engineering team providing full end-to-end agent capabilities, from design through testing.",
+      "version": "0.1.0"
+    },
+    {
+      "name": "writing",
+      "source": "plugins/writing",
+      "description": "A friendly companion for drafting, editing, and polishing all kinds of writing.",
+      "version": "0.1.0"
+    }
+  ]
+}
