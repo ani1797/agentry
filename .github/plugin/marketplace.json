@@ -1,0 +1,17 @@
+{
+  "name": "agentry",
+  "owner": {
+    "name": "ani1797"
+  },
+  "metadata": {
+    "description": "GitHub Copilot CLI plugin marketplace."
+  },
+  "plugins": [
+    {
+      "name": "writing",
+      "source": "plugins/writing",
+      "description": "Create and refine Substack posts, LinkedIn content, and Diátaxis documentation.",
+      "version": "0.1.0"
+    }
+  ]
+}

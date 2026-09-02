@@ -1,0 +1,15 @@
+{
+  "name": "writing",
+  "description": "Create and refine Substack posts, LinkedIn content, and Diátaxis documentation.",
+  "version": "0.1.0",
+  "author": {
+    "name": "ani1797"
+  },
+  "keywords": [
+    "writing",
+    "substack",
+    "linkedin",
+    "documentation",
+    "diataxis"
+  ]
+}
