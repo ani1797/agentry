@@ -1,15 +1,14 @@
 name: edge-case
-description: User has triple-booked slot with mixed internal and external meetings.
+description: Office hours conflict with a customer call — should stay tentative, never declined.
 prompt: >
-  I have three meetings at 2 PM tomorrow — one with a customer from
-  external.io, one with my manager jane.doe@acme.com, and an internal
-  team sync. Classify them by priority tier, keep the highest priority,
-  and mark the others tentative with alternative times. My work hours
-  are 9 AM to 5 PM.
+  I have a customer call at 2 PM tomorrow and an office hours session
+  at the same time. Classify them by tier. The customer call should
+  take priority but I still want to keep the office hours accepted or
+  tentative so I can join if possible — never decline it.
 expected:
   skill_invoked: calendar-prioritization
   output_contains:
-    - external
-    - internal
+    - office hours
     - tentative
-    - alternative
+    - customer
+    - never declined

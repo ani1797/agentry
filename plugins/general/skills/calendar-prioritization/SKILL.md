@@ -27,8 +27,9 @@ full tier table and settings.
 | T0 | **Protected block** | Lunch, breaks, focus time — never yielded. |
 | T1 | **Customer / external** | Any attendee's email domain ≠ `company_domain`. |
 | T2 | **Manager / skip-manager** | Attendee matches configured manager or skip-manager email. |
-| T3 | **Internal high-value** | Internal-only but tagged high-value or flagged in `custom_notes`. |
-| T4 | **Internal routine** | All attendees share `company_domain`, no special tag. |
+| T3 | **Office hours / learning** | Title or category matches office hours or learning sessions. Always accepted — never declined, only marked tentative when conflicting with T0–T1. |
+| T4 | **Internal high-value** | Internal-only but tagged high-value or flagged in `custom_notes`. |
+| T5 | **Internal routine** | All attendees share `company_domain`, no special tag. |
 
 **Internal vs external classification**: a meeting is *external* if at
 least one attendee's email domain differs from `company_domain`;
@@ -48,12 +49,15 @@ least one attendee's email domain differs from `company_domain`;
    - Compare every attendee's email domain against `company_domain`.
      All match → internal; any mismatch → external.
    - Check attendee list against manager/skip-manager emails.
-   - Assign the appropriate priority tier (T0–T4).
+   - Assign the appropriate priority tier (T0–T5).
 4. **Detect conflicts and resolve by tier.**
    - For each time slot with overlapping meetings, keep the
      highest-tier meeting accepted.
    - Mark lower-tier meetings **tentative** with a reason
      (e.g. "double-booked — conflicts with T1 customer call").
+   - **T3 (office hours / learning) are never declined** — when
+     conflicting with a higher-tier meeting they are marked tentative
+     so the user retains the option to join if available.
    - Suggest an alternative time for each tentative meeting by
      scanning open slots within `work_hours` on `work_days`.
 5. **Protect breaks/lunch.** Ensure T0 blocks remain unblocked;
