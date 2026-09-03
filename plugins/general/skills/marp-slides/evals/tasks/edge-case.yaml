@@ -1,0 +1,27 @@
+id: edge-case-001
+name: Themed deck with local images and split layout
+description: |
+  Edge case: the deck needs local assets (icons/photos), a split
+  background layout, and multiple export formats. The skill should
+  place assets under assets/, use Marpit background/layout syntax, and
+  remember --allow-local-files for the browser-based exports.
+tags:
+  - edge-case
+inputs:
+  prompt: >
+    Build a themed deck called "launch-review" with a title slide, a
+    slide with a left-side background photo and bullet content on the
+    right, and small icons next to each bullet. Export it to PDF, PPTX,
+    and HTML.
+expected:
+  output_contains:
+    - "docs/slides/launch-review"
+    - "assets"
+graders:
+  - type: text
+    name: covers-all-three-formats
+    config:
+      contains:
+        - ".pdf"
+        - ".pptx"
+        - ".html"

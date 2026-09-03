@@ -1,0 +1,22 @@
+id: boundary-002
+name: Standalone diagram is not a slide deck
+description: |
+  Boundary: user wants a single standalone diagram unrelated to any
+  presentation deck. Per this skill's DO NOT USE FOR, marp-slides must
+  not be invoked for standalone diagrams.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: "Create a standalone mermaid diagram showing our system architecture — it's not part of any slide deck, just a diagram to drop into an issue."
+graders:
+  - type: skill_invocation
+    name: marp_slides_not_invoked
+    config:
+      forbidden_skills:
+        - marp-slides
+      mode: any_order
+expected:
+  should_trigger: false
+  outcomes:
+    - type: task_completed

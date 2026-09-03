@@ -1,0 +1,22 @@
+id: visual-verification-001
+name: Visually verify slides before export
+description: |
+  Positive trigger: user explicitly asks for the mandatory visual
+  verification step — rendering slides to images and reviewing them for
+  layout issues before export. Exercises the "visual verification" USE
+  FOR case.
+tags:
+  - positive-trigger
+  - visual-verification-check
+inputs:
+  prompt: "Create a quick 3-slide Marp deck called api-intro (title, one content slide, one closing slide), then render each slide to an image and visually check for overflow or contrast issues before exporting to PDF."
+expected:
+  should_trigger: true
+  output_contains:
+    - "api-intro"
+graders:
+  - type: text
+    name: mentions-visual-check
+    config:
+      contains:
+        - "render"

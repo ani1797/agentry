@@ -1,0 +1,22 @@
+id: boundary-001
+name: Long-form report is not a slide deck
+description: |
+  Boundary: user wants a long-form written report, not a presentation.
+  Per this skill's DO NOT USE FOR, marp-slides must not be invoked for
+  long-form documents/reports.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: "Write a detailed 10-page project design document explaining our new architecture, with full prose sections."
+graders:
+  - type: skill_invocation
+    name: marp_slides_not_invoked
+    config:
+      forbidden_skills:
+        - marp-slides
+      mode: any_order
+expected:
+  should_trigger: false
+  outcomes:
+    - type: task_completed

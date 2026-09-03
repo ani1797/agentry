@@ -1,0 +1,21 @@
+id: theming-layout-001
+name: Re-theme and re-layout an existing deck
+description: |
+  Positive trigger: user asks to change the theme and adjust the layout
+  of an existing deck (split backgrounds, header/footer). Exercises the
+  "theming/layout" USE FOR case.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Switch my docs/slides/launch-review deck to the gaia theme and change the layout of the intro slide to a split background with the photo on the left."
+expected:
+  should_trigger: true
+  output_contains:
+    - "launch-review"
+    - "gaia"
+graders:
+  - type: text
+    name: mentions-theme
+    config:
+      contains:
+        - "theme"

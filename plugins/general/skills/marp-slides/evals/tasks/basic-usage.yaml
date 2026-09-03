@@ -1,0 +1,23 @@
+id: basic-usage-001
+name: Create a new deck and export to PDF
+description: |
+  Happy path: user asks for a brand-new quick slide deck exported to PDF.
+  The skill should scaffold docs/slides/<name>/main.md with Marp front
+  matter and export via the marp CLI.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Generate a new Marp slide deck (Markdown, quick presentation) under docs/slides/ introducing our Q3 roadmap, and export it to PDF."
+expected:
+  should_trigger: true
+  output_contains:
+    - "docs/slides/"
+    - "main.md"
+    - ".pdf"
+graders:
+  - type: text
+    name: mentions-marp-cli-export
+    config:
+      contains:
+        - "marp"
+        - ".pdf"
