@@ -12,7 +12,7 @@
       "name": "general",
       "source": "plugins/general",
       "description": "General-purpose agents and skills for everyday tasks that don't fit a specialized domain, including Microsoft 365 calendar prioritization.",
-      "version": "0.4.0"
+      "version": "0.4.1"
     },
     {
       "name": "engineer",
