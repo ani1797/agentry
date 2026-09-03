@@ -30,7 +30,8 @@ table, conflict rules, and tentative-message templates are in
 5. **Resolve conflicts** — keep highest tier accepted; mark lower-tier
    tentative with polite note and alternative times (see reference).
    T3 and large-attendance meetings are never declined.
-6. **Protect T0 blocks** (lunch flexes ±30 min for customer calls).
+6. **Protect T0 blocks** (lunch may flex up to ±30 min only for external
+   customer or manager calls).
 7. **Present** ranked summary; use `/tasks` for follow-ups.
 8. **Schedule** hourly recurring run via `/every` if none exists.
 

@@ -19,7 +19,7 @@ is filled with the default listed below.
 | `skip_manager_name` | Display name of your skip-level manager. | *(none)* |
 | `skip_manager_email` | Email address of your skip-level manager. | *(none)* |
 | `custom_notes` | Free-form notes: things to prioritize ("always keep Friday focus time") or avoid ("no meetings before 9 AM"). | *(none)* |
-| `lunch_window` | Time range to protect for lunch (24 h format). May flex ±30 min to accommodate customer calls. | `12:00–13:00` |
+| `lunch_window` | Time range to protect for lunch (24 h format). May flex up to ±30 min only for external customer or manager calls. | `12:00–13:00` |
 | `break_count` | Number of break blocks per day. | `2` |
 | `break_duration` | Duration of each break in minutes. | `15` |
 | `break_windows` | Explicit time ranges for breaks (overrides count/duration if set). | *(none — auto-placed based on count and duration)* |
@@ -37,8 +37,8 @@ suggested alternative time within `work_hours` on `work_days`.
 
 | Tier | Label | How it's determined |
 |------|-------|---------------------|
-| T0 | Protected block | Lunch, breaks, focus time from config — never yielded. |
-| T1 | [EXT] Customer / external | At least one attendee's email domain ≠ `company_domain`. Labelled **[EXT]**. Lunch may flex ±30 min to accommodate. |
+| T0 | Protected block | Lunch, breaks, focus time from config — normally never yielded. Lunch may flex up to ±30 min only for an external customer or manager call. |
+| T1 | [EXT] Customer / external | At least one attendee's email domain ≠ `company_domain`. Labelled **[EXT]**. Lunch may flex up to ±30 min only for this high-value call. |
 | T2 | Manager / skip-manager | Attendee matches `manager_email` or `skip_manager_email` (internal). |
 | T3 | Office hours / learning | Title or category matches any `learning_keywords` entry. **Always accepted** — never declined or rescheduled, only marked tentative when conflicting with T0–T1. |
 | T4 | Internal high-value | All attendees share `company_domain`, meeting tagged high-value or flagged in `custom_notes`. |
@@ -78,8 +78,9 @@ buffer are flagged in the output.
 
 ### Lunch flexibility
 
-When a T1 customer call overlaps the configured `lunch_window`, lunch
-may shift up to ±30 minutes rather than declining the customer call.
+When an external customer or manager call overlaps the configured
+`lunch_window`, lunch may shift up to ±30 minutes rather than declining the
+high-value call. No other meeting may move lunch.
 
 ## Example configuration (`~/calendar.md`)
 
