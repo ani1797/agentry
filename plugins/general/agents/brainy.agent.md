@@ -6,7 +6,7 @@ description: >
   and day-to-day commitments — and generates highlight/brag documents from
   it. Consult when you need context on a tracked entity/initiative/project,
   or need notes, timelines, or requirements added or organized.
-tools: ["read", "edit", "search", "todo", "ask_user", "workiq/*", "shell(mkdir:*)"]
+tools: ["read", "edit", "search", "todo", "ask_user", "workiq/*", "shell"]
 ---
 
 # Brainy

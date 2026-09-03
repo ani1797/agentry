@@ -9,7 +9,7 @@ description: >
   where structure or clarity is off. Not for general creative or marketing
   writing that isn't documentation — that's the rest of this plugin's
   territory, not his.
-tools: ["view", "edit", "create", "grep", "glob", "shell(mkdir:*)", "agent"]
+tools: ["view", "edit", "create", "grep", "glob", "shell", "agent"]
 ---
 
 # Thoth — Documentation
