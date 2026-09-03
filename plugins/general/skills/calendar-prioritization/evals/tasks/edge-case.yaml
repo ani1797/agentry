@@ -1,12 +1,15 @@
 name: edge-case
-description: User provides custom configuration overrides inline.
+description: User has triple-booked slot with mixed internal and external meetings.
 prompt: >
-  Prioritize my calendar for tomorrow with lunch_window=11:30-12:30
-  and make sure my skip manager John Smith's meetings take precedence
-  over other internal calls.
+  I have three meetings at 2 PM tomorrow — one with a customer from
+  external.io, one with my manager jane.doe@acme.com, and an internal
+  team sync. Classify them by priority tier, keep the highest priority,
+  and mark the others tentative with alternative times. My work hours
+  are 9 AM to 5 PM.
 expected:
   skill_invoked: calendar-prioritization
   output_contains:
-    - skip manager
-    - lunch
-    - prioritize
+    - external
+    - internal
+    - tentative
+    - alternative
