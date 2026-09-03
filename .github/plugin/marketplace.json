@@ -12,7 +12,7 @@
       "name": "general",
       "source": "plugins/general",
       "description": "General-purpose agents for everyday tasks that don't fit a specialized domain.",
-      "version": "0.2.0"
+      "version": "0.3.0"
     },
     {
       "name": "engineer",

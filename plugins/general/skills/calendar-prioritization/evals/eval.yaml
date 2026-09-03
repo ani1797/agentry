@@ -1,0 +1,7 @@
+name: calendar-prioritization
+description: Eval suite for the calendar-prioritization skill.
+skill: calendar-prioritization
+tasks:
+  - tasks/basic-usage.yaml
+  - tasks/edge-case.yaml
+  - tasks/should-not-trigger.yaml

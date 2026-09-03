@@ -1,0 +1,11 @@
+name: basic-usage
+description: User asks to review and prioritize their calendar for the week.
+prompt: >
+  Review my calendar for next week. Protect my lunch from 12-1 PM,
+  prioritize customer calls, and flag any double-bookings.
+expected:
+  skill_invoked: calendar-prioritization
+  output_contains:
+    - lunch
+    - customer
+    - conflict

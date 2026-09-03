@@ -1,0 +1,12 @@
+name: edge-case
+description: User provides custom configuration overrides inline.
+prompt: >
+  Prioritize my calendar for tomorrow with lunch_window=11:30-12:30
+  and make sure my skip manager John Smith's meetings take precedence
+  over other internal calls.
+expected:
+  skill_invoked: calendar-prioritization
+  output_contains:
+    - skip manager
+    - lunch
+    - prioritize

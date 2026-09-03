@@ -1,7 +1,7 @@
 {
   "name": "general",
   "description": "General-purpose agents for everyday tasks that don't fit a specialized domain.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": { "name": "Anirudh Aggarwal", "email": "ani1797@users.noreply.github.com" },
   "license": "MIT",
   "keywords": ["general", "assistant", "productivity"],
