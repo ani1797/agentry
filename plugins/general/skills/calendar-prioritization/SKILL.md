@@ -38,9 +38,13 @@ full tier table and settings.
 ## Steps
 
 1. **Load configuration.** Read settings from `~/calendar.md` if the
-   file exists; otherwise fall back to defaults. Settings include company
-   domain, manager/skip-manager info, work hours/days, break
-   count/duration, lunch window, meeting buffer, and custom notes — see
+   file exists. If the file does not exist (first run), create it by
+   querying WorkIQ to infer values from the user's existing Microsoft 365
+   setup (e.g. company domain from email, manager from org chart, typical
+   work hours from calendar patterns) and filling in defaults for anything
+   WorkIQ cannot determine. Settings include company domain,
+   manager/skip-manager info, work hours/days, break count/duration,
+   lunch window, meeting buffer, and custom notes — see
    [references/configuration.md](references/configuration.md).
 2. **Accept WorkIQ EULA.** If the WorkIQ EULA has not yet been accepted,
    automatically accept it via the `workiq_accept_eula` tool so calendar
@@ -82,9 +86,10 @@ full tier table and settings.
    tier: conflicts, protected blocks, buffer violations, tentative
    meetings with reasons and suggested reschedule times. Use `/tasks`
    to track follow-ups.
-9. **Schedule recurring runs (optional).** Use `/every` or `/loop` to
-   re-run the audit on a cadence (e.g. every morning, every Sunday
-   evening) so the calendar stays healthy without manual invocation.
+9. **Schedule recurring runs.** If no recurring schedule already exists,
+   automatically set one up via `/every` to run every 1 hour during work
+   hours. The audit always covers the next **14 weekdays** to keep a
+   two-week rolling window prioritized.
 
 ## Example
 

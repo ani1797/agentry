@@ -3,8 +3,11 @@
 ## Loading configuration
 
 Settings are read from **`~/calendar.md`** at invocation time. If the
-file does not exist, all defaults below apply. Any setting present in
-the file overrides the default; omitted settings keep their default.
+file does not exist (first run), the skill creates it automatically by
+querying WorkIQ to infer values from the user's Microsoft 365 setup
+(e.g. company domain from email address, manager from org chart, typical
+work hours from calendar patterns). Any value WorkIQ cannot determine
+is filled with the default listed below.
 
 ## Configurable settings
 
@@ -99,15 +102,27 @@ custom_notes: >
   Avoid scheduling over Friday afternoon focus time (14:00–17:00).
 ```
 
+## Recurring schedule and audit window
+
+If no recurring schedule already exists, the skill automatically
+registers one via `/every` to run **every 1 hour** during work hours.
+Each run covers the next **14 weekdays** (a rolling two-week window).
+
+| Setting | Description | Default |
+|---|---|---|
+| `schedule_interval` | How often the recurring audit runs (cron or human-readable). | `every 1 hour` |
+| `audit_window_days` | Number of weekdays to look ahead each run. | `14` |
+
 ## Using with /every and /loop
 
 Pass the configuration once; subsequent recurring runs reuse it:
 
 ```
-/every weekday 8:30 AM → /calendar-prioritization
+/every 1 hour → /calendar-prioritization
 ```
 
-Override a single setting for one run by specifying it inline:
+The default schedule is created automatically on first run. To
+customize, pass a different interval:
 
 ```
 /calendar-prioritization lunch_window=11:30–12:30
