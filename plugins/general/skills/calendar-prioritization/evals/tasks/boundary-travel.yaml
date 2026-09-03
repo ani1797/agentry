@@ -1,0 +1,26 @@
+id: boundary-004
+name: Travel planning is out of scope
+description: |
+  Boundary: DO NOT USE FOR travel planning. Booking flights and hotels around
+  a trip is scheduling adjacent but involves no meeting tiers, conflicts or
+  protected blocks, so the skill must not run.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: >
+    Plan my trip to the Seattle summit next month — find flights, book a hotel
+    near the venue, and put together the itinerary.
+graders:
+  - type: skill_invocation
+    name: calendar_prioritization_not_invoked
+    config:
+      forbidden_skills:
+        - calendar-prioritization
+      mode: any_order
+expected:
+  should_trigger: false
+  output_not_contains:
+    - "T0"
+  outcomes:
+    - type: task_completed

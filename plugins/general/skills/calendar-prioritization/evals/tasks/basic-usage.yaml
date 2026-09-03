@@ -1,0 +1,28 @@
+id: basic-usage-001
+name: Prioritize tomorrow and resolve double-bookings
+description: |
+  Happy path: the user asks for their calendar to be reviewed and ranked
+  for a single day. The skill should read config, fetch the day lean,
+  run the scorer, and report tiers, [EXT] labels and conflicts.
+tags:
+  - positive-trigger
+inputs:
+  prompt: >
+    Review and rank my Microsoft 365 calendar for tomorrow: tier the meetings,
+    label the external calls [EXT], resolve the double-bookings by tier, and
+    protect my lunch. Mark the lower-priority overlaps tentative with
+    alternative times.
+expected:
+  should_trigger: true
+  output_contains:
+    - "calendar"
+    - "tentative"
+  outcomes:
+    - type: task_completed
+graders:
+  - type: skill_invocation
+    name: calendar_skill_invoked
+    config:
+      required_skills:
+        - calendar-prioritization
+      mode: any_order

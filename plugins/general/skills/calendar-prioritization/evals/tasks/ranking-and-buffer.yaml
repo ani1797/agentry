@@ -1,0 +1,29 @@
+id: basic-usage-002
+name: Rank customer meetings, flag back-to-backs, explain each meeting
+description: |
+  Covers the reporting half of the workflow: ranking customer meetings
+  above internal ones, enforcing the meeting buffer so back-to-back
+  meetings are flagged, proposing alternative times for the overlaps it
+  marks tentative, and summarizing what every meeting is about.
+tags:
+  - positive-trigger
+inputs:
+  prompt: >
+    Go through today's calendar: rank my customer, manager and learning meetings
+    in order, tell me what each meeting is actually about, flag anything
+    back-to-back with no buffer, and for the double-bookings mark the
+    lower-priority one tentative with alternative times.
+expected:
+  should_trigger: true
+  output_contains:
+    - "buffer"
+    - "tentative"
+  outcomes:
+    - type: task_completed
+graders:
+  - type: skill_invocation
+    name: calendar_skill_invoked
+    config:
+      required_skills:
+        - calendar-prioritization
+      mode: any_order

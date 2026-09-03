@@ -1,0 +1,24 @@
+id: boundary-001
+name: Creating a meeting and sending invites is out of scope
+description: |
+  Boundary: this skill's DO NOT USE FOR excludes creating meetings and
+  sending invites. Scheduling a brand-new meeting with external guests is
+  calendar work, but not prioritization work, so the skill must not run.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: >
+    Set up a new 45-minute meeting next Tuesday with the Contoso team and
+    send them all an invite with a Teams link.
+graders:
+  - type: skill_invocation
+    name: calendar_prioritization_not_invoked
+    config:
+      forbidden_skills:
+        - calendar-prioritization
+      mode: any_order
+expected:
+  should_trigger: false
+  outcomes:
+    - type: task_completed

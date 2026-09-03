@@ -1,0 +1,24 @@
+id: boundary-003
+name: Editing someone else's calendar is out of scope
+description: |
+  Boundary: DO NOT USE FOR editing other people's calendars. Prioritization
+  operates on the user's own calendar only, so a request to rearrange a
+  colleague's day must not invoke this skill.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: >
+    Open Dana's calendar and move her Thursday afternoon meetings around so her
+    week is less packed.
+graders:
+  - type: skill_invocation
+    name: calendar_prioritization_not_invoked
+    config:
+      forbidden_skills:
+        - calendar-prioritization
+      mode: any_order
+expected:
+  should_trigger: false
+  outcomes:
+    - type: task_completed

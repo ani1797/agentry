@@ -1,0 +1,30 @@
+id: edge-case-001
+name: Edge case - office hours and a large all-hands overlap a customer call
+description: |
+  Exercises the never-declined rules: a T3 office-hours session and a
+  large-attendance meeting overlapping an external customer call must be
+  marked tentative only — never declined and never asked to reschedule —
+  while the [EXT] customer call keeps the slot.
+tags:
+  - edge-case
+inputs:
+  prompt: >
+    My office hours session and a 200-person all-hands both collide with a
+    customer call on my calendar today. Sort out the conflicts, keep the
+    customer call, and tell me what each meeting is about.
+expected:
+  should_trigger: true
+  output_contains:
+    - "tentative"
+    - "EXT"
+  output_not_contains:
+    - "declined the office hours"
+  outcomes:
+    - type: task_completed
+graders:
+  - type: skill_invocation
+    name: calendar_skill_invoked
+    config:
+      required_skills:
+        - calendar-prioritization
+      mode: any_order

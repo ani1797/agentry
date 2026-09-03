@@ -1,0 +1,27 @@
+id: boundary-002
+name: Drafting email to an attendee is out of scope
+description: |
+  Boundary: DO NOT USE FOR drafting email. Writing a message to a meeting
+  attendee mentions meetings and the calendar but requires no tiering,
+  conflict resolution or protected blocks, so the skill must not run.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: >
+    Draft a friendly email to Priya summarizing what we agreed in yesterday's
+    architecture review and asking her for the updated cost estimate.
+graders:
+  - type: skill_invocation
+    name: calendar_prioritization_not_invoked
+    config:
+      forbidden_skills:
+        - calendar-prioritization
+      mode: any_order
+expected:
+  should_trigger: false
+  output_not_contains:
+    - "T0"
+    - "T5"
+  outcomes:
+    - type: task_completed
