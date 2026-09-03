@@ -1,3 +1,11 @@
 {
-  "mcpServers": {}
+  "mcpServers": {
+    "workiq": {
+      "type": "local",
+      "command": "npx",
+      "args": ["-y", "@microsoft/workiq@latest", "mcp"],
+      "env": {},
+      "tools": ["*"]
+    }
+  }
 }
