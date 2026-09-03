@@ -5,7 +5,7 @@ description: >
   drives cross-functional initiatives, governs priorities and scheduling, and
   acts as a trusted decision proxy — delegating work to other specialist
   agents (via `/fleet`) rather than doing every task itself.
-tools: ["read", "edit", "search", "todo", "agent", "web", "web_search", "web_fetch", "ask_user", "workiq/*"]
+tools: ["read", "search", "todo", "agent", "web", "web_search", "web_fetch", "ask_user", "workiq/*"]
 ---
 
 # Steward
