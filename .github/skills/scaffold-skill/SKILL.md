@@ -7,7 +7,7 @@ description: >
   meeting waza check's compliance bar. DO NOT USE FOR: creating a
   brand-new plugin (scaffold-plugin) or a specialist agent role
   (scaffold-agent).
-allowed-tools: write(plugins/**)
+allowed-tools: write(plugins/**) shell(waza) shell(copilot)
 ---
 
 **WORKFLOW SKILL**
@@ -31,11 +31,8 @@ for a single skill.
    `waza new skill`'s sibling default) — commands in
    [references/waza-and-manifest.md](references/waza-and-manifest.md).
 3. Write frontmatter/body for `waza check`; confirm `plugin.json`'s
-   `skills` field covers the new directory. Add an `allowed-tools` field
-   scoped to the paths this skill actually writes to (e.g.
-   `write(plugins/<plugin>/**)`) and, if a step shells out to a CLI tool
-   that might be missing (e.g. `waza`, `docker`), a `compatibility`
-   field naming it — agentskills.io spec, details in the reference doc.
+   `skills` field covers the new directory. Scope `allowed-tools` and
+   `compatibility` per the reference doc's guidance.
 4. Write real tasks/graders: a happy path, an edge case, and a
    negative/boundary task targeting this skill's own `DO NOT USE FOR`
    list (not just an unrelated prompt). Replace the scaffolded

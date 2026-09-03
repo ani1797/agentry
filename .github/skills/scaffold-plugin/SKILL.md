@@ -7,7 +7,7 @@ description: >
   .github/plugin/marketplace.json. DO NOT USE FOR: adding a skill or agent
   to an existing plugin (scaffold-skill / scaffold-agent), or changes
   spanning several plugins (multi-primitive-update).
-allowed-tools: write(plugins/**) write(.github/plugin/marketplace.json)
+allowed-tools: write(plugins/**) write(.github/plugin/marketplace.json) shell(jq) shell(mkdir) shell(copilot)
 ---
 
 **WORKFLOW SKILL**

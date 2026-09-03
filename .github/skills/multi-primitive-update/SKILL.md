@@ -7,7 +7,7 @@ description: >
   components together, or a schema change touching multiple plugins at
   once. DO NOT USE FOR: a change confined to one new plugin, skill, or
   agent — use scaffold-plugin, scaffold-skill, or scaffold-agent instead.
-allowed-tools: write(plugins/**) write(.github/plugin/marketplace.json)
+allowed-tools: write(plugins/**) write(.github/plugin/marketplace.json) shell(jq) shell(waza) shell(copilot)
 ---
 
 **WORKFLOW SKILL**
@@ -16,10 +16,9 @@ allowed-tools: write(plugins/**) write(.github/plugin/marketplace.json)
 
 ## Overview
 
-A plugin rename touches every path and manifest inside it; a new plugin
-ships its first skill and agent together; a schema change ripples across
-many `plugin.json` files. Sequences the change so the repo is never left
-partially consistent, every touched file landing in one PR with matching
+Renames, new-plugin bundles, and schema changes touch many files at
+once. Sequences the change so the repo is never left partially
+consistent, every touched file landing in one PR with matching
 metadata.
 
 ## Steps
