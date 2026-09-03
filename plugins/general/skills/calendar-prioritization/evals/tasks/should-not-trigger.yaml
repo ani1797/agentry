@@ -1,10 +1,22 @@
-name: should-not-trigger
-description: >
-  User asks to create a new meeting invite — outside this skill's scope.
-prompt: >
-  Send a meeting invite to alice@example.com for Friday at 3 PM about
-  the Q4 budget review.
+id: boundary-001
+name: Creating meeting invites is not calendar prioritization
+description: |
+  Boundary: user wants to send a new meeting invite. Per this skill's
+  DO NOT USE FOR, calendar-prioritization must not be invoked for
+  creating events or sending invites.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: "Send a meeting invite to alice@example.com for Friday at 3 PM about the Q4 budget review."
+graders:
+  - type: skill_invocation
+    name: calendar_prioritization_not_invoked
+    config:
+      forbidden_skills:
+        - calendar-prioritization
+      mode: any_order
 expected:
-  skill_invoked: null
-  forbidden_skills:
-    - calendar-prioritization
+  should_trigger: false
+  outcomes:
+    - type: task_completed

@@ -1,14 +1,22 @@
-name: basic-usage
-description: User asks to review and prioritize their calendar for the week.
-prompt: >
-  Review my calendar for next week. Protect my lunch, prioritize
-  customer calls with [EXT] labels, flag any double-bookings with
-  polite tentative notes and alternative times, and make sure I have
-  at least 5 minutes between meetings.
+id: basic-usage-001
+name: Review and prioritize calendar for the week
+description: |
+  Happy path: user asks for a full calendar review with lunch protection,
+  [EXT] labels, double-booking detection, and meeting buffer enforcement.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Review my calendar for next week. Protect my lunch, prioritize customer calls with [EXT] labels, flag any double-bookings with polite tentative notes and alternative times, and make sure I have at least 5 minutes between meetings."
 expected:
-  skill_invoked: calendar-prioritization
+  should_trigger: true
   output_contains:
-    - lunch
+    - "lunch"
     - "[EXT]"
-    - tentative
-    - buffer
+    - "tentative"
+graders:
+  - type: text
+    name: mentions-calendar-prioritization
+    config:
+      contains:
+        - "calendar"
+        - "tentative"

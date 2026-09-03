@@ -1,0 +1,23 @@
+id: review-conflicts-001
+name: Review calendar for conflicts and enforce priority rules
+description: |
+  Covers req-description-001, req-use-001, req-use-002: user asks to
+  review their calendar for conflicts and apply priority rules to
+  overlapping meetings, enforcing configurable calendar rules.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Enforce my configurable calendar rules that prevent over-commitment for this week: review my upcoming calendar for conflicts, apply priority rules to overlapping meeting requests, guard my breaks and lunch, label external calls with [EXT], enforce meeting buffers between calls, and rank customer, manager, and learning sessions by priority."
+expected:
+  should_trigger: true
+  output_contains:
+    - "conflict"
+    - "[EXT]"
+    - "priority"
+graders:
+  - type: text
+    name: mentions-conflict-and-priority
+    config:
+      contains:
+        - "calendar"
+        - "conflict"

@@ -1,0 +1,21 @@
+id: boundary-modify-others-001
+name: Modifying other people's calendars is out of scope
+description: |
+  Boundary: covers req-dont-003. User asks to modify a colleague's
+  calendar directly. Per DO NOT USE FOR, this skill must not be invoked.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: "Go into Sarah's calendar and move her 2 PM meeting to 4 PM so she's free for our sync."
+graders:
+  - type: skill_invocation
+    name: calendar_prioritization_not_invoked
+    config:
+      forbidden_skills:
+        - calendar-prioritization
+      mode: any_order
+expected:
+  should_trigger: false
+  outcomes:
+    - type: task_completed

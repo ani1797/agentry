@@ -1,0 +1,22 @@
+id: protect-breaks-001
+name: Protect break and lunch blocks
+description: |
+  Covers req-use-003: user asks to protect break and lunch blocks
+  on their calendar for the coming week.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Protect my break and lunch blocks for next week. Make sure no meetings overlap my lunch window or scheduled breaks."
+expected:
+  should_trigger: true
+  output_contains:
+    - "lunch"
+    - "break"
+    - "protect"
+graders:
+  - type: text
+    name: mentions-break-lunch-protection
+    config:
+      contains:
+        - "lunch"
+        - "break"

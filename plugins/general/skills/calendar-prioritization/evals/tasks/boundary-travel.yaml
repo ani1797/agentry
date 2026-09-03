@@ -1,0 +1,21 @@
+id: boundary-travel-001
+name: Travel or expense scheduling is out of scope
+description: |
+  Boundary: covers req-dont-004. User asks to schedule travel or
+  expense reports. Per DO NOT USE FOR, this skill must not be invoked.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: "Book my flight to Seattle for the conference next Thursday and submit the travel expense report."
+graders:
+  - type: skill_invocation
+    name: calendar_prioritization_not_invoked
+    config:
+      forbidden_skills:
+        - calendar-prioritization
+      mode: any_order
+expected:
+  should_trigger: false
+  outcomes:
+    - type: task_completed

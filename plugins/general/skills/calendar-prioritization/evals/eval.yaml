@@ -1,7 +1,17 @@
-name: calendar-prioritization
-description: Eval suite for the calendar-prioritization skill.
+name: calendar-prioritization-eval
+description: Auto-generated eval for calendar-prioritization.
 skill: calendar-prioritization
+version: "1.0"
+config:
+  trials_per_task: 1
+  timeout_seconds: 600
+  parallel: false
+  executor: copilot-sdk
+  model: claude-sonnet-4.6
+metrics:
+  - name: task_completion
+    weight: 1.0
+    threshold: 0.8
+    description: Did the skill complete trigger and anti-trigger checks?
 tasks:
-  - tasks/basic-usage.yaml
-  - tasks/edge-case.yaml
-  - tasks/should-not-trigger.yaml
+  - "tasks/*.yaml"

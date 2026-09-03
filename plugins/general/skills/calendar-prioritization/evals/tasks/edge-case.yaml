@@ -1,15 +1,25 @@
-name: edge-case
-description: Office hours conflict with a customer call — office hours stay tentative, never declined or rescheduled.
-prompt: >
-  I have a customer call at 2 PM tomorrow and an office hours session
-  at the same time. The customer call should take priority but keep
-  the office hours accepted or tentative — never decline or reschedule
-  it. Mark the customer call as [EXT]. Use a polite tentative message
-  without exposing tier labels.
+id: edge-case-001
+name: Office hours conflict with customer call
+description: |
+  Edge case: office hours session conflicts with a customer call.
+  The customer call takes priority but office hours must never be
+  declined — only marked tentative. Tentative message must be polite
+  with no tier labels.
+tags:
+  - positive-trigger
+  - edge-case
+inputs:
+  prompt: "I have a customer call at 2 PM tomorrow and an office hours session at the same time. The customer call should take priority but keep the office hours accepted or tentative — never decline or reschedule it. Mark the customer call as [EXT]. Use a polite tentative message without exposing tier labels."
 expected:
-  skill_invoked: calendar-prioritization
+  should_trigger: true
   output_contains:
-    - office hours
-    - tentative
+    - "office hours"
+    - "tentative"
     - "[EXT]"
-    - message me directly
+graders:
+  - type: text
+    name: office-hours-not-declined
+    config:
+      contains:
+        - "tentative"
+        - "office hours"

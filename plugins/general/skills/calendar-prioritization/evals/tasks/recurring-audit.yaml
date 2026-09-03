@@ -1,0 +1,20 @@
+id: recurring-audit-001
+name: Schedule recurring calendar audit
+description: |
+  Covers req-use-005: user asks to schedule a recurring calendar
+  audit using /every or /loop.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Set up a recurring calendar audit that runs every hour using /every. It should cover the next 14 weekdays and keep my calendar prioritized."
+expected:
+  should_trigger: true
+  output_contains:
+    - "recurring"
+    - "every"
+graders:
+  - type: text
+    name: mentions-recurring-schedule
+    config:
+      contains:
+        - "recurring"

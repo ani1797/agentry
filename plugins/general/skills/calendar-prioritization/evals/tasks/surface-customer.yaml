@@ -1,0 +1,20 @@
+id: surface-customer-001
+name: Surface high-value and customer calls
+description: |
+  Covers req-use-004: user asks to surface and prioritize customer
+  and high-value calls above routine internal meetings.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Surface all high-value and customer calls on my calendar for the next two weeks. Prioritize them above routine internal meetings."
+expected:
+  should_trigger: true
+  output_contains:
+    - "customer"
+    - "high-value"
+graders:
+  - type: text
+    name: mentions-customer-calls
+    config:
+      contains:
+        - "customer"
