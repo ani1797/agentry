@@ -37,9 +37,9 @@ suggested alternative time within `work_hours` on `work_days`.
 
 | Tier | Label | How it's determined |
 |------|-------|---------------------|
-| T0 | Protected block | Lunch, breaks, focus time from config — normally never yielded. Lunch may flex up to ±30 min only for an external customer or manager call. |
+| T0 | Protected block | Lunch, breaks, focus time from config — normally never yielded. Lunch may flex up to ±30 min only for an external customer or manager/skip-manager call. |
 | T1 | [EXT] Customer / external | At least one attendee's email domain ≠ `company_domain`. Labelled **[EXT]**. Lunch may flex up to ±30 min only for this high-value call. |
-| T2 | Manager / skip-manager | Attendee matches `manager_email` or `skip_manager_email` (internal). |
+| T2 | Manager / skip-manager | Attendee matches `manager_email` or `skip_manager_email` (internal). Lunch may flex up to ±30 min for this high-value call. |
 | T3 | Office hours / learning | Title or category matches any `learning_keywords` entry. **Always accepted** — never declined or rescheduled, only marked tentative when conflicting with T0–T1. |
 | T4 | Internal high-value | All attendees share `company_domain`, meeting tagged high-value or flagged in `custom_notes`. |
 | T5 | Internal routine | All attendees share `company_domain`, no special tag. |
@@ -78,7 +78,7 @@ buffer are flagged in the output.
 
 ### Lunch flexibility
 
-When an external customer or manager call overlaps the configured
+When an external customer or manager/skip-manager call overlaps the configured
 `lunch_window`, lunch may shift up to ±30 minutes rather than declining the
 high-value call. No other meeting may move lunch.
 
