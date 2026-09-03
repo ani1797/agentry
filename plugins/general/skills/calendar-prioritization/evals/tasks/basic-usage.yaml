@@ -1,13 +1,14 @@
 name: basic-usage
 description: User asks to review and prioritize their calendar for the week.
 prompt: >
-  Review my calendar for next week. Protect my lunch from 12-1 PM,
-  prioritize customer calls, and flag any double-bookings. Mark
-  lower-priority conflicts as tentative with suggested alternative times.
+  Review my calendar for next week. Protect my lunch, prioritize
+  customer calls with [EXT] labels, flag any double-bookings with
+  polite tentative notes and alternative times, and make sure I have
+  at least 5 minutes between meetings.
 expected:
   skill_invoked: calendar-prioritization
   output_contains:
     - lunch
-    - customer
+    - "[EXT]"
     - tentative
-    - tier
+    - buffer

@@ -1,14 +1,15 @@
 name: edge-case
-description: Office hours conflict with a customer call — should stay tentative, never declined.
+description: Office hours conflict with a customer call — office hours stay tentative, never declined or rescheduled.
 prompt: >
   I have a customer call at 2 PM tomorrow and an office hours session
-  at the same time. Classify them by tier. The customer call should
-  take priority but I still want to keep the office hours accepted or
-  tentative so I can join if possible — never decline it.
+  at the same time. The customer call should take priority but keep
+  the office hours accepted or tentative — never decline or reschedule
+  it. Mark the customer call as [EXT]. Use a polite tentative message
+  without exposing tier labels.
 expected:
   skill_invoked: calendar-prioritization
   output_contains:
     - office hours
     - tentative
-    - customer
-    - never declined
+    - "[EXT]"
+    - message me directly
