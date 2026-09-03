@@ -89,7 +89,7 @@ skip_manager_email: john.smith@acme.com
 lunch_window: 12:00–13:00
 break_count: 2
 break_duration: 15
-break_windows: 10:00–10:15, 15:00–15:15
+# break_windows: 10:00–10:15, 15:00–15:15  ← overrides count/duration if set
 meeting_buffer: 5
 work_hours: 09:00–17:00
 work_days: Mon, Tue, Wed, Thu, Fri

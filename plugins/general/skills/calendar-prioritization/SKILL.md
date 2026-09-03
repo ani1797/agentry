@@ -42,9 +42,10 @@ full tier table and settings.
    domain, manager/skip-manager info, work hours/days, break
    count/duration, lunch window, meeting buffer, and custom notes — see
    [references/configuration.md](references/configuration.md).
-2. **Accept WorkIQ EULA.** Automatically accept the WorkIQ EULA via the
-   `workiq_accept_eula` tool so calendar queries proceed without manual
-   intervention.
+2. **Accept WorkIQ EULA.** If the WorkIQ EULA has not yet been accepted,
+   automatically accept it via the `workiq_accept_eula` tool so calendar
+   queries proceed without interruption (WorkIQ requires this one-time
+   acceptance before data access).
 3. **Fetch calendar data.** Use WorkIQ tools (`workiq_get_calendar_events`,
    `workiq_search_calendar`) to retrieve the user's upcoming calendar
    entries for the target window (today, this week, etc.). Use `/explore`
