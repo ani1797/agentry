@@ -2,7 +2,7 @@ id: multi-design-system-001
 name: Multiple Design Systems In One Project
 description: |
   Test that the skill builds and tracks more than one design system
-  within the same Stitch project (e.g. light/dark), per step 2's
+  within the same Stitch project (e.g. light/dark), per the Setup
   "repeat the pairing per extra brand/theme" guidance.
 tags:
   - positive-trigger

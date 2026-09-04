@@ -1,7 +1,7 @@
 # Getting started with the Stitch skill's MCP servers
 
-This skill depends on three MCP servers already declared in
-`plugins/engineer/.mcp.json`: `stitch`, `context7`, and `playwright`.
+This skill depends on two MCP servers already declared in
+`plugins/engineer/.mcp.json`: `stitch`, and `playwright`.
 If a tool call fails with "server not found" or an auth error, check:
 
 ## stitch
@@ -10,13 +10,6 @@ If a tool call fails with "server not found" or an auth error, check:
 - Requires `STITCH_API_KEY` set in the environment before the CLI
   starts (referenced as `${STITCH_API_KEY}` in `.mcp.json`).
 - No local install needed; connectivity to `googleapis.com` is required.
-
-## context7
-
-- Remote HTTP server: `https://mcp.context7.com/mcp`.
-- Requires `CONTEXT7_API_KEY` in the environment
-  (`${CONTEXT7_API_KEY}` in `.mcp.json`). Get a free key at
-  https://context7.com/dashboard.
 
 ## playwright
 
@@ -33,5 +26,19 @@ copilot plugin install ./plugins/engineer
 ```
 
 Then in an interactive session, run `/mcp list` (or equivalent) to
-confirm `stitch`, `context7`, and `playwright` show as connected before
+confirm `stitch`, and `playwright` show as connected before
 invoking this skill.
+
+## If `stitch` tools don't appear at all
+
+This isn't the same as an auth error — it means the CLI session never
+loaded the server. Observed cause: `.mcp.json` or `STITCH_API_KEY` was
+added/changed *after* the current session started. MCP servers are
+read at session/plugin-install time, so:
+
+1. Confirm `STITCH_API_KEY` is actually exported in the shell the CLI
+   launches from (`echo $STITCH_API_KEY`), not just written to a
+   dotfile in a *different* still-open shell.
+2. Re-run `copilot plugin install ./plugins/engineer` and start a
+   fresh CLI session — don't keep debugging inside the session that
+   predates the config change.

@@ -1,8 +1,9 @@
 id: variants-001
 name: Generate Refine/Explore/Reimagine Variants
 description: |
-  Test that the skill uses generate_variants with a creative range when
-  asked to explore alternatives for an existing screen.
+  Test that the skill uses generate_variants for generating variants
+  with a creative range when asked to explore alternatives for an
+  existing screen.
 tags:
   - positive-trigger
   - variants

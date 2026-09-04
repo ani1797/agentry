@@ -3,7 +3,7 @@ name: Edge Case - Granular Edit Instead Of Regenerating
 description: |
   Test that a small, targeted change request against an existing screen
   is handled as a scoped edit rather than a full screen regeneration,
-  per this skill's own step 4 distinction (edit_screens vs
+  per this skill's own Build-step distinction (edit_screens vs
   generate_screen_from_text).
 tags:
   - edge-case
