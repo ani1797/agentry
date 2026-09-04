@@ -1,0 +1,20 @@
+id: should-not-trigger-001
+name: Should Not Trigger - Unrelated Request
+description: |
+  Test that the skill does NOT activate on a prompt with no relation to
+  UI prototyping or Stitch, validating trigger specificity.
+tags:
+  - anti-trigger
+  - negative-test
+inputs:
+  prompt: "What's the weather like in Seattle today?"
+graders:
+  - type: skill_invocation
+    name: stitch_not_invoked
+    config:
+      forbidden_skills:
+        - stitch
+      mode: any_order
+expected:
+  outcomes:
+    - type: task_completed

@@ -1,0 +1,20 @@
+id: boundary-trigger-002
+name: Boundary - Non-Stitch Design Tool
+description: |
+  Test that this skill stays out of scope for non-Stitch design tools
+  like Figma or Sketch, per this skill's own DO NOT USE FOR.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: "Help me reorganize the layer groups in my Figma file for our app redesign."
+graders:
+  - type: skill_invocation
+    name: stitch_not_invoked
+    config:
+      forbidden_skills:
+        - stitch
+      mode: any_order
+expected:
+  outcomes:
+    - type: task_completed

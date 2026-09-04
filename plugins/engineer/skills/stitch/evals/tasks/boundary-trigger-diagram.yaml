@@ -1,0 +1,21 @@
+id: boundary-trigger-003
+name: Boundary - Diagram Request
+description: |
+  Test that this skill stays out of scope for diagram/flowchart
+  requests, which belong to the mermaid skill per this skill's own
+  DO NOT USE FOR.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: "Add a flowchart diagram of our auth flow to docs/architecture.md."
+graders:
+  - type: skill_invocation
+    name: stitch_not_invoked
+    config:
+      forbidden_skills:
+        - stitch
+      mode: any_order
+expected:
+  outcomes:
+    - type: task_completed

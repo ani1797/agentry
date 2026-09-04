@@ -1,0 +1,21 @@
+id: basic-usage-001
+name: Basic Usage - New Project With Design System
+description: |
+  Test that the skill starts a new Stitch prototype correctly: create a
+  project, establish a design system (create + update pairing), then
+  generate one screen using that design system.
+tags:
+  - basic
+  - happy-path
+inputs:
+  prompt: >
+    I'm starting a UI prototype and want to prototype and iterate on
+    UI/UX designs using the Stitch MCP toolset for "Eval Sandbox App":
+    set up a clean, modern design system, then generate a single
+    settings screen for it.
+expected:
+  output_contains:
+    - "design system"
+    - "screen"
+  outcomes:
+    - type: task_completed

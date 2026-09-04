@@ -1,0 +1,19 @@
+id: edge-case-001
+name: Edge Case - Granular Edit Instead Of Regenerating
+description: |
+  Test that a small, targeted change request against an existing screen
+  is handled as a scoped edit rather than a full screen regeneration,
+  per this skill's own step 4 distinction (edit_screens vs
+  generate_screen_from_text).
+tags:
+  - edge-case
+inputs:
+  prompt: >
+    In my existing Stitch project's login screen, just rename the
+    primary button to "Get Moving" — don't touch anything else on the
+    screen.
+expected:
+  output_not_contains:
+    - "regenerate the whole screen"
+  outcomes:
+    - type: task_completed

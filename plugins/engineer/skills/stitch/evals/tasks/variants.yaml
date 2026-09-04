@@ -1,0 +1,17 @@
+id: variants-001
+name: Generate Refine/Explore/Reimagine Variants
+description: |
+  Test that the skill uses generate_variants with a creative range when
+  asked to explore alternatives for an existing screen.
+tags:
+  - positive-trigger
+  - variants
+inputs:
+  prompt: >
+    Generate a few bolder, more divergent color and layout variants of
+    my Stitch dashboard screen so I can compare directions.
+expected:
+  output_contains:
+    - "variant"
+  outcomes:
+    - type: task_completed

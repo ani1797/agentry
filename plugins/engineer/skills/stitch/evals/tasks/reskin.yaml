@@ -1,0 +1,19 @@
+id: reskin-001
+name: Re-skin Screens With A Design System
+description: |
+  Test that the skill applies a design system across multiple existing
+  screens for consistency, using apply_design_system rather than
+  editing each screen by hand.
+tags:
+  - positive-trigger
+  - re-skin
+inputs:
+  prompt: >
+    I need help re-skinning screens across my Stitch project with our
+    updated design system so they all match the new brand colors.
+expected:
+  output_contains:
+    - "design system"
+    - "re-skin"
+  outcomes:
+    - type: task_completed

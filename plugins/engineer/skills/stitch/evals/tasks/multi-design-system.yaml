@@ -1,0 +1,20 @@
+id: multi-design-system-001
+name: Multiple Design Systems In One Project
+description: |
+  Test that the skill builds and tracks more than one design system
+  within the same Stitch project (e.g. light/dark), per step 2's
+  "repeat the pairing per extra brand/theme" guidance.
+tags:
+  - positive-trigger
+  - multi-design-system
+inputs:
+  prompt: >
+    I want to try building and switching between multiple design
+    systems in my Stitch project — a vibrant light theme and a calmer
+    dark theme — so I can compare the same screen under both.
+expected:
+  output_contains:
+    - "design system"
+    - "design systems"
+  outcomes:
+    - type: task_completed

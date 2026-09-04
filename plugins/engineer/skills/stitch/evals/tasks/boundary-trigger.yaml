@@ -1,0 +1,23 @@
+id: boundary-trigger-001
+name: Boundary - Hand-Written Production Code
+description: |
+  Test that this skill stays out of scope when the user wants
+  hand-written production frontend code, not a Stitch prototype — this
+  skill's own DO NOT USE FOR.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: >
+    Write the production React and TypeScript code for our checkout
+    page from scratch, wired up to our existing API client.
+graders:
+  - type: skill_invocation
+    name: stitch_not_invoked
+    config:
+      forbidden_skills:
+        - stitch
+      mode: any_order
+expected:
+  outcomes:
+    - type: task_completed
