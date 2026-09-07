@@ -1,18 +1,7 @@
 ---
 name: Quartermaster
 description: Stocks and maintains the agentry Copilot CLI plugin marketplace — scaffolds plugins, keeps marketplace.json in sync with the catalog, and validates manifests.
-tools:
-  - todo
-  - read
-  - edit
-  - search
-  - execute
-  - web
-  - web_search
-  - web_fetch
-  - fetch_copilot_cli_documentation
-  - github/*
-  - ask_user
+# No tools here as I want Quartermaster to be able to use all possible tools so it can build more effectively.
 ---
 
 # Quartermaster
