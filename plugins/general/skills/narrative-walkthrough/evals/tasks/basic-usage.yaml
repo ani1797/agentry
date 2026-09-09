@@ -1,0 +1,29 @@
+id: basic-usage-001
+name: Build a narrated walkthrough of a live app feature
+description: |
+  Happy path: the user asks for a narrated demo video of a specific
+  flow in a live web app. The skill should write narration segments,
+  generate TTS audio, record a real continuous Playwright session with
+  fade transitions, derive real sync offsets via scene-detection, mux,
+  and verify before delivering.
+tags:
+  - positive-trigger
+inputs:
+  prompt: >
+    Build a narrated walkthrough video of the signup flow in this repo:
+    landing page, sign up form, email verification, and the first-run
+    dashboard. Use real screens, not slides.
+expected:
+  should_trigger: true
+  output_contains:
+    - "narration"
+    - "scene"
+  outcomes:
+    - type: task_completed
+graders:
+  - type: skill_invocation
+    name: narrative_walkthrough_skill_invoked
+    config:
+      required_skills:
+        - narrative-walkthrough
+      mode: any_order
