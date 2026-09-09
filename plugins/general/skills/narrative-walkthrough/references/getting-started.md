@@ -53,10 +53,36 @@ afterward — it is not part of the app and must not be committed.
 
 ## TTS engine options
 
-Any of these work; pick whichever is already available:
+Pick whichever is already available; prefer higher-quality options when
+credentials/resources for them already exist:
 
-- **Local Kokoro-FastAPI** (good default, no cloud dependency, no GPU
-  required): run once via Docker —
+- **Azure AI Foundry MAI-Voice-2 / MAI-Voice-2-Flash** (best quality —
+  highest-fidelity, most expressive voices; prefer this if the user
+  already has an Azure AI Services/Speech resource, e.g. via `az
+  cognitiveservices account list`): use
+  [scripts/tts_azure_mai_voice.sh](../scripts/tts_azure_mai_voice.sh).
+  ```bash
+  export AZURE_SPEECH_RESOURCE_NAME=<your-resource-name>
+  export AZURE_SPEECH_RESOURCE_GROUP=<its-resource-group>
+  scripts/tts_azure_mai_voice.sh "<segment text>" audio/<id>.wav \
+    en-US-Harper:MAI-Voice-2
+  ```
+  Requires `az login` and at least the "Cognitive Services User" role on
+  the resource — no subscription key needed, even if the resource has
+  `disableLocalAuth=true` (the script authenticates with a Microsoft
+  Entra ID token). MAI-Voice-2 favors expressiveness/fidelity for
+  long-form narration; MAI-Voice-2-Flash trades a little quality for
+  lower latency — either is fine for pre-generated clips. List every
+  voice a given resource actually exposes (94+ MAI-Voice entries across
+  15+ languages is typical) with the `voices/list` call documented in
+  the script's header comment. Gotchas already handled by the script:
+  the synthesis path is `/tts/cognitiveservices/v1` (not the bare
+  `/cognitiveservices/v1` from key-based docs examples), and a resource
+  that's been idle can 502 on the very first call — the script retries
+  once automatically.
+- **Local Kokoro-FastAPI** (good default when no cloud resource is
+  available, no cloud dependency, no GPU required): run once via
+  Docker —
   ```bash
   docker run -d --name narration-tts -p 8880:8880 \
     ghcr.io/remsky/kokoro-fastapi-cpu:latest
