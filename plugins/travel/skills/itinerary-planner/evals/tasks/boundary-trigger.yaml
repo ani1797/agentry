@@ -1,0 +1,26 @@
+id: boundary-trigger-001
+name: Boundary - Booking, Visa Advice, Flight Status, and Unrelated Recommendation
+description: |
+  Test that this skill stays out of scope for booking or paying for
+  travel, visa/immigration advice, real-time flight status tracking, and
+  a single restaurant/activity recommendation unrelated to a broader
+  trip — per this skill's own DO NOT USE FOR list.
+tags:
+  - anti-trigger
+  - boundary
+inputs:
+  prompt: >
+    Book and pay for the cheapest flight from SF to Tokyo on Nov 10,
+    tell me if I need a visa for Japan, check the real-time status of
+    flight NH7 today, and separately recommend one good ramen restaurant
+    in Shinjuku.
+graders:
+  - type: skill_invocation
+    name: itinerary_planner_not_invoked
+    config:
+      forbidden_skills:
+        - itinerary-planner
+      mode: any_order
+expected:
+  outcomes:
+    - type: task_completed

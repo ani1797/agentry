@@ -1,0 +1,11 @@
+{
+  "name": "travel",
+  "description": "Trip planning helpers for building itineraries, comparing options, and organizing travel logistics.",
+  "version": "0.1.0",
+  "author": { "name": "Anirudh Aggarwal", "email": "ani1797@users.noreply.github.com" },
+  "license": "MIT",
+  "keywords": ["travel", "itinerary", "trip-planning"],
+  "hooks": "hooks.json",
+  "mcpServers": ".mcp.json",
+  "lspServers": "lsp.json"
+}

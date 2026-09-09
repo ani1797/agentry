@@ -1,0 +1,18 @@
+id: edge-case-001
+name: Edge Case - Comparing Flight Options and Dates
+description: |
+  Test the flight-comparison workflow: comparing flight options and
+  candidate travel dates via the flights MCP server before drafting the
+  itinerary, distinct from the single-date happy path in basic-usage.
+tags:
+  - edge-case
+inputs:
+  prompt: >
+    I'm flexible on dates for a Lisbon trip next spring — compare flight
+    options across a few candidate departure dates and recommend which
+    dates and flights to build the itinerary around.
+expected:
+  output_contains:
+    - "flight"
+  outcomes:
+    - type: task_completed
