@@ -8,7 +8,7 @@ description: >
   USE FOR: demo/onboarding videos, feature walkthroughs, release recap
   videos, "show it don't say it" product tours, re-generating a stale or
   jarring manually-recorded demo video for any project.
-  DO NOT USE FOR: static slide decks (use marp-slides), single screenshots,
+  DO NOT USE FOR: static slide decks (use #marp), single screenshots,
   hand-animated marketing motion graphics, diagrams (use mermaid).
 allowed-tools: write(/tmp/narrative-walkthrough/**)
 compatibility:
@@ -17,8 +17,10 @@ compatibility:
     repo; a system Chrome/Chromium binary if the bundled one isn't
     downloaded
   tts: any local or cloud text-to-speech engine reachable over HTTP or CLI
-    (e.g. a local Kokoro-FastAPI Docker container, `say`, `espeak-ng`, or
-    a cloud API) — see references/getting-started.md
+    — best quality via Azure AI Foundry MAI-Voice-2/MAI-Voice-2-Flash on
+    an existing Azure AI Services/Speech resource, falling back to a
+    local Kokoro-FastAPI Docker container, `say`, `espeak-ng`, or another
+    cloud API — see references/getting-started.md
 ---
 
 **WORKFLOW SKILL**
