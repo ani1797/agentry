@@ -1,8 +1,11 @@
 {
   "mcpServers": {
     "flights": {
+      "type": "local",
       "command": "uv",
-      "args": ["run", "--with", "flights[mcp]", "fli-mcp"]
+      "args": ["run", "--with", "flights[mcp]", "fli-mcp"],
+      "env": {},
+      "tools": ["*"]
     }
   }
 }
