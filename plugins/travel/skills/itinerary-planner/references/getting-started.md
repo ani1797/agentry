@@ -3,12 +3,19 @@
 This skill queries flight options through the `flights` MCP server,
 configured in `plugins/travel/.mcp.json` as:
 
-```json
-"flights": {
-  "command": "uv",
-  "args": ["run", "--with", "flights[mcp]", "fli-mcp"]
+~~~json
+{
+  "mcpServers": {
+    "flights": {
+      "type": "local",
+      "command": "uv",
+      "args": ["run", "--with", "flights[mcp]", "fli-mcp"],
+      "env": {},
+      "tools": ["*"]
+    }
+  }
 }
-```
+~~~
 
 ## Install `uv`
 
