@@ -1,0 +1,52 @@
+<!--
+  Generic animated title/recap card for narrative-walkthrough intros,
+  section breaks, and outros. Open as a file:// URL with query params:
+    ?title=...&subtitle=...&items=Item%20one|Item%20two|Item%20three
+  Bullets stagger-reveal (fade+slide) instead of appearing all at once,
+  avoiding a long static hold while narration reads them out.
+-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  html, body { margin: 0; height: 100%; background: #05070d; overflow: hidden; }
+  body {
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: flex-start; padding: 8vh 8vw;
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif; color: #eef2ff;
+  }
+  h1 { font-size: 3.2rem; margin: 0 0 0.5rem; font-weight: 700; }
+  h2 { font-size: 1.4rem; margin: 0 0 3rem; color: #93a0c7; font-weight: 400; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li {
+    font-size: 1.3rem; margin: 0.6rem 0; opacity: 0; transform: translateY(12px);
+    transition: opacity 500ms ease, transform 500ms ease;
+  }
+  li.show { opacity: 1; transform: translateY(0); }
+  li::before { content: "›"; color: #6ea8fe; margin-right: 0.75rem; }
+</style>
+</head>
+<body>
+  <h1 id="title"></h1>
+  <h2 id="subtitle"></h2>
+  <ul id="items"></ul>
+<script>
+  const params = new URLSearchParams(location.search);
+  document.getElementById("title").textContent = params.get("title") || "";
+  document.getElementById("subtitle").textContent = params.get("subtitle") || "";
+  const items = (params.get("items") || "").split("|").filter(Boolean);
+  const ul = document.getElementById("items");
+  const lis = items.map((text) => {
+    const li = document.createElement("li");
+    li.textContent = text;
+    ul.appendChild(li);
+    return li;
+  });
+  // Stagger reveal across roughly the first half of the card's dwell time.
+  const durationMs = parseInt(params.get("duration") || "6000", 10);
+  const staggerMs = Math.min(700, (durationMs * 0.4) / Math.max(1, lis.length));
+  lis.forEach((li, i) => setTimeout(() => li.classList.add("show"), 300 + i * staggerMs));
+</script>
+</body>
+</html>

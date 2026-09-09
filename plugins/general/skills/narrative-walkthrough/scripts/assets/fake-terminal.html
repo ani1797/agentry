@@ -1,0 +1,81 @@
+<!--
+  Generic fake-terminal prop page for narrative-walkthrough scenes that
+  need to show CLI/log output without waiting on a real slow command
+  live. IMPORTANT: populate `lines` with REAL captured output (actual
+  curl responses, actual log lines) from the target system -- never
+  invented text -- to keep the demo authentic.
+
+  Query params:
+    ?caption=...&lines=<JSON array>&duration=<ms>
+  lines: [{"type":"cmd","text":"..."}, {"type":"out","text":"..."}, ...]
+
+  Typing animation batches DOM updates in chunks (not per character) to
+  avoid flooding Chromium's screencast/CDP frame queue while this page
+  is being recorded by Playwright -- see references/recording-guide.md
+  for why this matters and why you must still verify final sync with
+  real scene-detection regardless of this mitigation.
+-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  html, body { margin: 0; height: 100%; background: #0b0e14; overflow: hidden; }
+  body { font-family: ui-monospace, "SF Mono", Menlo, monospace; color: #d6deeb; }
+  .titlebar {
+    height: 40px; display: flex; align-items: center; gap: 8px;
+    padding: 0 14px; background: #12151c; border-bottom: 1px solid #1e2330;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .cap { margin-left: 10px; color: #8b93a7; font-size: 0.85rem; }
+  #body { padding: 20px 26px; font-size: 1.05rem; line-height: 1.6; white-space: pre-wrap; }
+  .cmd { color: #82e0ff; }
+  .comment { color: #5c6478; }
+</style>
+</head>
+<body>
+  <div class="titlebar">
+    <div class="dot" style="background:#ff5f57"></div>
+    <div class="dot" style="background:#febc2e"></div>
+    <div class="dot" style="background:#28c840"></div>
+    <span class="cap" id="cap"></span>
+  </div>
+  <div id="body"></div>
+<script>
+  const params = new URLSearchParams(location.search);
+  document.getElementById("cap").textContent = params.get("caption") || "";
+  const lines = JSON.parse(params.get("lines") || "[]");
+  const durationMs = parseInt(params.get("duration") || "8000", 10);
+  const body = document.getElementById("body");
+
+  const CHUNK = 5; // batch DOM updates -- do not go per-character
+  const MIN_CHUNK_DELAY = 35;
+
+  async function typeLine(el, text, perCharBudgetMs) {
+    const totalChunks = Math.ceil(text.length / CHUNK);
+    const delay = Math.max(MIN_CHUNK_DELAY, (perCharBudgetMs * CHUNK) / Math.max(1, text.length));
+    for (let i = 0; i < totalChunks; i++) {
+      el.textContent = text.slice(0, (i + 1) * CHUNK);
+      await new Promise((r) => setTimeout(r, delay));
+    }
+    el.textContent = text;
+  }
+
+  (async () => {
+    const cmdCount = lines.filter((l) => l.type === "cmd").length || 1;
+    const perCmdBudget = (durationMs * 0.6) / cmdCount;
+    for (const line of lines) {
+      const div = document.createElement("div");
+      div.className = line.type === "cmd" ? "cmd" : line.type === "comment" ? "comment" : "";
+      body.appendChild(div);
+      if (line.type === "cmd") {
+        await typeLine(div, "$ " + line.text, perCmdBudget);
+      } else {
+        div.textContent = line.text;
+        await new Promise((r) => setTimeout(r, 60));
+      }
+    }
+  })();
+</script>
+</body>
+</html>

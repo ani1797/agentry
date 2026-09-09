@@ -1,0 +1,18 @@
+id: should-not-trigger-001
+name: Static slide deck request should not trigger this skill
+description: |
+  A request for a slide deck (no live app recording, no narration/video)
+  should route to marp-slides, not narrative-walkthrough.
+tags:
+  - negative-trigger
+inputs:
+  prompt: >
+    Make a 6-slide deck introducing our new API, export to PDF.
+expected:
+  should_trigger: false
+graders:
+  - type: skill_invocation
+    name: narrative_walkthrough_not_invoked
+    config:
+      forbidden_skills:
+        - narrative-walkthrough
