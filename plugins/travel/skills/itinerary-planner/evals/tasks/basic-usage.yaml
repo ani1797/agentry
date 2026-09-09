@@ -1,0 +1,22 @@
+id: basic-usage-001
+name: Basic Usage - Full Trip Itinerary
+description: |
+  Test that the skill builds a day-by-day, budget-aware travel itinerary
+  from a destination, date range, traveler preferences, and flight
+  options pulled from the flights MCP server, then writes it out as a
+  single structured document — covering planning multi-day trip
+  itineraries and organizing daily activities/lodging/transport
+  logistics into one itinerary doc.
+tags:
+  - basic
+  - happy-path
+inputs:
+  prompt: >
+    Plan a 5-day Tokyo itinerary, flying from SF, Nov 10-15, budget
+    $3000, for 2 travelers. Write it out as a single itinerary document
+    with a day-by-day plan covering activities, lodging, and transport.
+expected:
+  output_contains:
+    - "itinerary"
+  outcomes:
+    - type: task_completed

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "flights": {
+      "command": "uv",
+      "args": ["run", "--with", "flights[mcp]", "fli-mcp"]
+    }
+  }
+}
