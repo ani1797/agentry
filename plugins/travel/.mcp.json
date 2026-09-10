@@ -13,6 +13,10 @@
     "kiwi": {
       "type": "http",
       "url": "https://mcp.kiwi.com"
+    },
+    "trivago": {
+      "type": "http",
+      "url": "https://mcp.trivago.com"
     }
   }
 }
