@@ -17,6 +17,13 @@
     "trivago": {
       "type": "http",
       "url": "https://mcp.trivago.com/mcp"
+    },
+    "airbnb": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@openbnb/mcp-server-airbnb"
+      ]
     }
   }
 }
