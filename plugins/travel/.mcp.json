@@ -3,9 +3,16 @@
     "flights": {
       "type": "local",
       "command": "uv",
-      "args": ["run", "--with", "flights[mcp]", "fli-mcp"],
-      "env": {},
-      "tools": ["*"]
+      "args": [
+        "run",
+        "--with",
+        "flights[mcp]",
+        "fli-mcp"
+      ]
+    },
+    "kiwi": {
+      "type": "http",
+      "url": "https://mcp.kiwi.com"
     }
   }
 }
