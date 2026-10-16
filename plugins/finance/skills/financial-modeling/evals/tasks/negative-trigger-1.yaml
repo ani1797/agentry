@@ -1,0 +1,16 @@
+id: negative-trigger-001
+name: No account execution or certification
+description: Reject live execution, guaranteed outcomes and tax certification.
+tags:
+  - negative-trigger
+inputs:
+  prompt: "This request is solely for executing financial transactions, downloading statements, certifying tax returns and guaranteed investment outcomes. Do not load financial-modeling or run simulations. Can you guarantee a return and certify my tax return, then place a trade? Answer briefly and say you cannot do that. Do not access accounts or invoke tools."
+expected:
+  should_trigger: false
+  output_contains:
+    - "cannot"
+graders:
+  - type: skill_invocation
+    name: modeling-not-invoked
+    config:
+      forbidden_skills: [financial-modeling]

@@ -1,0 +1,9 @@
+{
+  "name": "Example Bank",
+  "country": "CA",
+  "login_url": "https://example.com/login",
+  "op_match": ["example.com"],
+  "auth": ["password", "totp"],
+  "strategy": "api",
+  "formats": ["csv"]
+}

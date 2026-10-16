@@ -1,0 +1,18 @@
+id: positive-trigger-002
+name: Correcting a shared spending assumption
+description: Invalidate all dependent scenarios when the baseline changes.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Load financial-baseline for reconciling statement coverage and revising shared planning assumptions. My invented planning baseline understated spending and recorded a personal tax balance as corporate. Explain a versioned correction log and identify FIRE, RESP cash budgeting and withdrawal plans as needing review or reruns. Keep unknown insurance terms unknown. Do not read personal files, create files or compute new projections."
+expected:
+  should_trigger: true
+  output_contains:
+    - "FIRE"
+    - "unknown"
+graders:
+  - type: skill_invocation
+    name: baseline-invoked
+    config:
+      mode: any_order
+      required_skills: [financial-baseline]

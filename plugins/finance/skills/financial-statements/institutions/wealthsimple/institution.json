@@ -1,0 +1,11 @@
+{
+  "name": "Wealthsimple",
+  "country": "CA",
+  "login_url": "https://my.wealthsimple.com/app/login",
+  "home_url_pattern": "my.wealthsimple.com/app/(home|docs|account)",
+  "op_match": ["wealthsimple.com", "wealthsimple"],
+  "auth": ["password", "passkey (skip via 'Try another way')", "totp"],
+  "strategy": "api",
+  "formats": ["csv", "json"],
+  "notes": "Statements are fetched from the my.wealthsimple.com/graphql API using the session's OAuth cookie. See references/wealthsimple.md."
+}

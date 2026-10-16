@@ -1,0 +1,18 @@
+id: positive-trigger-001
+name: Account ownership and holdings reconciliation
+description: Separate third-party assets and flag missing holdings without invented entries.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Build and reconcile a reusable local financial-planning baseline. Load financial-baseline for documenting a financial profile and consolidating account ownership, holdings, liabilities, benefits, and cost basis. Invented facts: my personal account totals 10000 but listed holdings plus cash equal 9000; another 5000 account belongs entirely to a relative. Give a concise reconciliation with the unexplained 1000 gap and missing cost basis marked unknown; never count the relative's assets as mine. Do not create files or access any real data."
+expected:
+  should_trigger: true
+  output_contains:
+    - "unknown"
+    - "gap"
+graders:
+  - type: skill_invocation
+    name: baseline-invoked
+    config:
+      mode: any_order
+      required_skills: [financial-baseline]

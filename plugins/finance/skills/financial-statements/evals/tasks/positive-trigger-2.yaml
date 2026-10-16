@@ -1,0 +1,19 @@
+id: positive-trigger-002
+name: Unsupported institution and manual authentication
+description: Route institution extension requests without inventing support.
+tags: [positive-trigger, edge-case]
+inputs:
+  prompt: "I want to add support for another financial institution and export or sync its statements; it is not Wealthsimple or CIBC. Load financial-statements and explain the adapter extension contract only, including institution.json, login.js, download.js and the since range. Do not create files, run commands, use credentials or open a browser."
+expected:
+  should_trigger: true
+  output_contains:
+    - "institution.json"
+    - "login.js"
+    - "download.js"
+    - "since"
+graders:
+  - type: skill_invocation
+    name: statements-invoked
+    config:
+      mode: any_order
+      required_skills: [financial-statements]
