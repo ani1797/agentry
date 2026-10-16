@@ -1,0 +1,16 @@
+id: negative-trigger-001
+name: Planning and transaction boundary
+description: Do not download records for advice or execute account changes.
+tags:
+  - negative-trigger
+inputs:
+  prompt: "I need financial planning or investment advice, not statement downloads. Should I prioritize costly debt or retirement savings? Also execute transfers or payments and trades for me. Do not load financial-statements or access live accounts. Give a brief educational answer and explicitly say you cannot execute transactions."
+expected:
+  should_trigger: false
+  output_contains:
+    - "cannot"
+graders:
+  - type: skill_invocation
+    name: statements-not-invoked
+    config:
+      forbidden_skills: [financial-statements]

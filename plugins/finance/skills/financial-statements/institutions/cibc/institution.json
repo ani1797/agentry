@@ -1,0 +1,9 @@
+{
+  "name": "CIBC",
+  "country": "CA",
+  "login_url": "https://www.cibconline.cibc.com/ebm-resources/online-banking/client/index.html#/auth/signon",
+  "op_match": ["cibconline", "cibc.com", "cibc"],
+  "auth": ["card number + password", "OTVC (SMS/email/app)"],
+  "strategy": "api",
+  "formats": ["csv", "json"]
+}

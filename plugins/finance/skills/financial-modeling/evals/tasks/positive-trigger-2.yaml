@@ -1,0 +1,20 @@
+id: positive-trigger-002
+name: Canadian model limitations and comparison invariants
+description: Avoid overselling tax, pension and withdrawal model completeness.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Load financial-modeling and plan Canadian tax estimates, CPP timing, RESP funding and retirement withdrawal schedules. Do not execute anything or access private data. State the supported province/year, whether CPP earned entitlement is computed, the requirement for equal starting household budgets in RESP comparisons, and why mandatory withdrawal surplus must be reinvested. Explain that Quebec tax and LIF maximum withdrawals are unsupported."
+expected:
+  should_trigger: true
+  output_contains:
+    - "Ontario"
+    - "2026"
+    - "CPP"
+    - "RESP"
+graders:
+  - type: skill_invocation
+    name: modeling-invoked
+    config:
+      mode: any_order
+      required_skills: [financial-modeling]

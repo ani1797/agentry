@@ -1,0 +1,22 @@
+{
+  "current_age": 35,
+  "retirement_age": 55,
+  "end_age": 95,
+  "initial_balance": 300000,
+  "annual_savings": 25000,
+  "annual_retirement_spending": 45000,
+  "annual_return": 0.05,
+  "annual_volatility": 0.15,
+  "annual_fee": 0.002,
+  "inflation": 0.02,
+  "income_events": [
+    { "name": "Illustrative after-tax pension", "start_age": 65, "end_age": 94, "annual_amount": 12000 }
+  ],
+  "expense_events": [
+    { "name": "Illustrative one-off purchase", "start_age": 45, "end_age": 45, "annual_amount": 15000 }
+  ],
+  "trials": 500,
+  "seed": 42,
+  "retirement_ages": [50, 55, 60],
+  "method": "lognormal"
+}

@@ -31,6 +31,12 @@
       "source": "plugins/travel",
       "description": "Trip planning helpers for building itineraries, comparing options, and organizing travel logistics.",
       "version": "0.1.0"
+    },
+    {
+      "name": "finance",
+      "source": "plugins/finance",
+      "description": "Personal financial planning, statement downloads, reusable statistics, backtesting, and Canadian retirement scenario modeling.",
+      "version": "0.1.0"
     }
   ]
 }

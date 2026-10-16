@@ -1,0 +1,19 @@
+id: positive-trigger-001
+name: Reuse modeling engine for synthetic FIRE
+description: Use the bundled deterministic model and disclose what its success means.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Run reusable offline calculations for user-defined financial scenarios. Load financial-modeling. Use its bundled engine, without creating a new script, for FIRE projections from the synthetic assets/fire-example.json and explain how descriptive statistics, historical backtesting and Monte Carlo or block-bootstrap simulations differ. Do not use private files, web services, credentials or live accounts. Include the exact reproducible finance_model.py command in your response, label all bundled return examples synthetic (not observed market history), and distinguish conditional frequencies from guarantees."
+expected:
+  should_trigger: true
+  output_contains:
+    - "finance_model.py"
+    - "conditional"
+    - "synthetic"
+graders:
+  - type: skill_invocation
+    name: modeling-invoked
+    config:
+      mode: any_order
+      required_skills: [financial-modeling]

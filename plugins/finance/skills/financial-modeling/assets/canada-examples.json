@@ -1,0 +1,26 @@
+{
+  "notice": "Synthetic independent command inputs. Extract the relevant object into a local JSON file.",
+  "tax": {
+    "province": "ON", "tax_year": 2026, "ordinary_income": 80000,
+    "capital_gains": 10000, "rrsp_deduction": 5000
+  },
+  "cpp": {
+    "monthly_at_65": 900, "start_age_months": 840,
+    "valuation_age_months": 720, "end_age": 95, "real_discount_rate": 0.02
+  },
+  "resp": {
+    "start_age": 0, "prior_contributions": 0, "prior_cesg": 0,
+    "unused_cesg_room": 0, "eligible_at_16_17": true,
+    "available_budget": 50000, "annual_return": 0.04,
+    "student_effective_tax_rate": 0.1, "taxable_capital_gains_rate": 0.2,
+    "contributions": [2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500]
+  },
+  "withdrawals": {
+    "province": "ON", "tax_year": 2026, "start_age": 70, "end_age": 75,
+    "balances": { "taxable": 100000, "tfsa": 100000, "rrsp": 300000, "rrif": 0 },
+    "taxable_acb": 70000, "annual_real_spending": 40000,
+    "annual_real_income": 12000, "return_path": [0.04,0.04,-0.15,0.08,0.04],
+    "inflation": 0.02, "annual_fee": 0.002,
+    "strategy": ["taxable", "rrsp", "rrif", "tfsa"]
+  }
+}

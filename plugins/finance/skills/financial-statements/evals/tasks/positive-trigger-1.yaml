@@ -1,0 +1,18 @@
+id: positive-trigger-001
+name: Wealthsimple download preparation
+description: Explain the supported download workflow without accessing live accounts.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Download bank, brokerage, and credit-card statements or transactions as per-account CSV/JSON files using the institution's portal. I need a preparation-only explanation of fetching, downloading, exporting, and syncing statements from Wealthsimple or CIBC. Load the financial-statements skill. Do not run shell commands, open a browser, access credentials, or contact any institution. State the bridge command family and what happens without 1Password."
+expected:
+  should_trigger: true
+  output_contains:
+    - "bridge.py"
+    - "manual"
+graders:
+  - type: skill_invocation
+    name: statements-invoked
+    config:
+      mode: any_order
+      required_skills: [financial-statements]

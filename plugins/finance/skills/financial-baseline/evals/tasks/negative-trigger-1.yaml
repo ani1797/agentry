@@ -1,0 +1,16 @@
+id: negative-trigger-001
+name: Portal and simulation boundary
+description: Keep portal sign-in and computation outside the baseline workflow.
+tags:
+  - negative-trigger
+inputs:
+  prompt: "This is not a baseline documentation task: I need signing into financial portals, executing transactions, running statistical simulations or certifying tax filings. Do not load financial-baseline or access tools. Say briefly that baseline documentation does not do this, financial-modeling handles simulations, and you cannot execute transactions or certify filings."
+expected:
+  should_trigger: false
+  output_contains:
+    - "cannot"
+graders:
+  - type: skill_invocation
+    name: baseline-not-invoked
+    config:
+      forbidden_skills: [financial-baseline]
