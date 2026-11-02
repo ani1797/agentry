@@ -1,0 +1,2 @@
+# Verified false positives (gitleaks fingerprints). Do not add real secrets here; rotate them instead.
+6155de8:plugins/finance/skills/financial-modeling/references/validation.md:generic-api-key:32
